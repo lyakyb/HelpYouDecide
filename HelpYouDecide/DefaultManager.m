@@ -8,6 +8,17 @@
 
 #import "DefaultManager.h"
 
+NSString * const HelpYouDecideAllDecisionsTyped = @"HelpYouDecideAllDecisionsTyped";
+NSString * const HelpYouDecideDecisionsNotTyped = @"HelpYouDecideDecisionNotTyped";
+NSString * const HelpYouDecideLetsRoll = @"HelpYouDecideLetsRoll";
+NSString * const HelpYouDecideDecisionsPageLoaded = @"HelpYouDecideDecisionsPageLoaded";
+
+@interface DefaultManager ()
+
+@property (nonatomic, readwrite) NSArray *decisions;
+
+@end
+
 @implementation DefaultManager
 
 + (instancetype)sharedInstance {
@@ -17,6 +28,10 @@
         sharedInstance = [self new];
     });
     return sharedInstance;
+}
+
+- (void)storeDecisionsFromArray:(NSArray *)decisions {
+    self.decisions = decisions;
 }
 
 @end

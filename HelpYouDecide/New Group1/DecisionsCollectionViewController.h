@@ -18,5 +18,4 @@ typedef enum {
 
 @property (nonatomic, strong) NSMutableArray *decisions;
 
-
 @end

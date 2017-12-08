@@ -20,6 +20,10 @@
     [super awakeFromNib];
     self.rollButton.layer.cornerRadius = 30;
     self.rollButton.clipsToBounds = YES;
+    
+    [self invalidateIntrinsicContentSize];
 }
+
+
 
 @end

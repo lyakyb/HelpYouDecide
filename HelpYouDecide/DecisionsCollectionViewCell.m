@@ -16,6 +16,10 @@
 
 @implementation DecisionsCollectionViewCell
 
+- (NSString *)decision {
+    return self.textField.text;
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
 }

@@ -1,4 +1,4 @@
-//
+
 //  DecisionsCollectionViewController.m
 //  HelpYouDecide
 //
@@ -12,7 +12,9 @@
 #import "DefaultManager.h"
 #import "DecisionsCollectionViewCell.h"
 
-@interface DecisionsCollectionViewController () <UICollectionViewDelegateFlowLayout>
+@interface DecisionsCollectionViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout>
+
+@property (nonatomic, strong) NSMutableArray *decisionCells;
 
 @end
 
@@ -25,15 +27,39 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 
     self.decisions = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
     
-    NSLog(@"DecisionsCollectionVC ViewDidLoad");
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveAllDecisionsAndRoll) name:HelpYouDecideLetsRoll object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsPageLoaded object:nil];
+    
+    NSLog(@"HelpYouDecideDecisionsPageLoaded Posted");
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DecisionsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
+    //Holding reference to cells for later use
+    [self.decisionCells addObject:cell];
     
     return cell;
 }
+
+- (void)saveAllDecisionsAndRoll {
+    for (DecisionsCollectionViewCell *cell in self.decisionCells) {
+        [self.decisions addObject:cell.decision];
+    }
+    
+    [[DefaultManager sharedInstance] storeDecisionsFromArray:self.decisions];
+    
+    [self performSegueWithIdentifier:@"LetsRollSegue" sender:nil];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    NSLog(@"textField Did End editing");
+    
+    
+}
+
 
 #pragma mark <UICollectionViewDelegate>
 
@@ -91,32 +117,8 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     return DecisionsCollectionViewSectionDecisions == section ? [[DefaultManager sharedInstance] numberOfDecisions] : 0;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    UICollectionReusableView *emptyView = [UICollectionReusableView new];
-    NSLog(@"Number of Decisions: %ld", [[DefaultManager sharedInstance] numberOfDecisions]);
-    if(indexPath.section == DecisionsCollectionViewSectionFooter){
-        DecisionsFooterView *reusableView = (id)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"DecisionsFooter" forIndexPath:indexPath];
-        return reusableView;
-    }
-    
-    return emptyView;
-}
-
 
 #pragma mark <UICollectionViewDelegateFlowLayout>
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-    switch (section) {
-        case DecisionsCollectionViewSectionFooter:
-            return CGSizeMake(self.collectionView.bounds.size.width, 125.0f);
-        case DecisionsCollectionViewSectionDecisions:
-            if (self.decisions.count) {
-                return CGSizeMake(self.collectionView.bounds.size.width, 75.f);
-            }
-        default:
-            return CGSizeZero;
-    }
-}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(self.view.bounds.size.width, 75.0f);
@@ -126,6 +128,7 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 
 //- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 //    UICollectionReusableView *decisionsFooterView = (id)[self.collectionView supplementaryViewForElementKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForItem:0 inSection:DecisionsCollectionViewSectionFooter]];
+//
 //}
 
 @end

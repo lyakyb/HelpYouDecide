@@ -22,6 +22,9 @@
 		8EF4FB1B1FD9133800D39055 /* DecisionsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB1A1FD9133800D39055 /* DecisionsCollectionView.m */; };
 		8EF4FB1E1FD9137D00D39055 /* DecisionsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB1D1FD9137D00D39055 /* DecisionsCollectionViewCell.m */; };
 		8EF4FB211FD937FE00D39055 /* DefaultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB201FD937FE00D39055 /* DefaultManager.m */; };
+		8EF4FB281FDA7AF400D39055 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB271FDA7AF400D39055 /* OverlayViewController.m */; };
+		8EF4FB2B1FDA7BAD00D39055 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB2A1FDA7BAD00D39055 /* OverlayView.m */; };
+		8EF4FB2D1FDB2F0000D39055 /* Overlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EF4FB2C1FDB2F0000D39055 /* Overlay.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,11 @@
 		8EF4FB1D1FD9137D00D39055 /* DecisionsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecisionsCollectionViewCell.m; sourceTree = "<group>"; };
 		8EF4FB1F1FD937FE00D39055 /* DefaultManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultManager.h; sourceTree = "<group>"; };
 		8EF4FB201FD937FE00D39055 /* DefaultManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultManager.m; sourceTree = "<group>"; };
+		8EF4FB261FDA7AF400D39055 /* OverlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
+		8EF4FB271FDA7AF400D39055 /* OverlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
+		8EF4FB291FDA7BAD00D39055 /* OverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
+		8EF4FB2A1FDA7BAD00D39055 /* OverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
+		8EF4FB2C1FDB2F0000D39055 /* Overlay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Overlay.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +124,12 @@
 				8EA6D6B11FD6EE2200DF56FA /* Views */,
 				8EA6D6851FD6E55D00DF56FA /* AppDelegate.h */,
 				8EA6D6861FD6E55D00DF56FA /* AppDelegate.m */,
+				8EF4FB2C1FDB2F0000D39055 /* Overlay.storyboard */,
 				8EA6D68B1FD6E55D00DF56FA /* Main.storyboard */,
+				8EF4FB261FDA7AF400D39055 /* OverlayViewController.h */,
+				8EF4FB291FDA7BAD00D39055 /* OverlayView.h */,
+				8EF4FB2A1FDA7BAD00D39055 /* OverlayView.m */,
+				8EF4FB271FDA7AF400D39055 /* OverlayViewController.m */,
 				8EF4FB1C1FD9137D00D39055 /* DecisionsCollectionViewCell.h */,
 				8EF4FB1D1FD9137D00D39055 /* DecisionsCollectionViewCell.m */,
 				8EF4FB1F1FD937FE00D39055 /* DefaultManager.h */,
@@ -246,6 +259,7 @@
 				8EA6D6921FD6E55D00DF56FA /* LaunchScreen.storyboard in Resources */,
 				8EA6D68F1FD6E55D00DF56FA /* Assets.xcassets in Resources */,
 				8EA6D68D1FD6E55D00DF56FA /* Main.storyboard in Resources */,
+				8EF4FB2D1FDB2F0000D39055 /* Overlay.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +283,9 @@
 				8EF4FB181FD8EB3400D39055 /* DecisionsFooterView.m in Sources */,
 				8EA6D6BE1FD7D1DA00DF56FA /* HesitationCollectionViewController.m in Sources */,
 				8EF4FB1B1FD9133800D39055 /* DecisionsCollectionView.m in Sources */,
+				8EF4FB2B1FDA7BAD00D39055 /* OverlayView.m in Sources */,
 				8EA6D6951FD6E55D00DF56FA /* main.m in Sources */,
+				8EF4FB281FDA7AF400D39055 /* OverlayViewController.m in Sources */,
 				8EA6D6B81FD7CA4300DF56FA /* FinalDecisionViewController.m in Sources */,
 				8EF4FB1E1FD9137D00D39055 /* DecisionsCollectionViewCell.m in Sources */,
 				8EA6D6871FD6E55D00DF56FA /* AppDelegate.m in Sources */,

@@ -10,6 +10,8 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) UIWindow *rollButtonWindow;
+
 @end
 
 @implementation AppDelegate
@@ -17,6 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    self.rollButtonWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.rollButtonWindow.rootViewController = [[UIStoryboard storyboardWithName:@"Overlay" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+    [self.rollButtonWindow addSubview:self.rollButtonWindow.rootViewController.view];
+    self.rollButtonWindow.rootViewController.view.frame = self.rollButtonWindow.bounds;
+    self.rollButtonWindow.windowLevel = UIWindowLevelAlert-1;
+    [self.rollButtonWindow makeKeyAndVisible];
+    [self.rollButtonWindow setUserInteractionEnabled:NO];
+
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

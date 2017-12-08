@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KUs-T9-mr5">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Chalkduster.ttf">
+            <string>Chalkduster</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Overlay View Controller-->
+        <scene sceneID="sux-Ni-v6x">
+            <objects>
+                <viewController id="KUs-T9-mr5" customClass="OverlayViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Q5-bN-3Ra" customClass="OverlayView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hda-0C-iDW">
+                                <rect key="frame" x="0.0" y="602" width="375" height="65"/>
+                                <color key="backgroundColor" red="0.3513245874" green="0.58520310799999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="HSK-Gq-lj9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="35"/>
+                                <state key="normal" title="Let's Roll!">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="rollButtonPressed:" destination="3Q5-bN-3Ra" eventType="touchDown" id="k81-sC-ocY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hda-0C-iDW" firstAttribute="centerX" secondItem="Yzj-ea-WmN" secondAttribute="centerX" id="U1c-ar-i8N"/>
+                            <constraint firstItem="hda-0C-iDW" firstAttribute="width" secondItem="3Q5-bN-3Ra" secondAttribute="width" id="vFr-K2-8zP"/>
+                            <constraint firstItem="Yzj-ea-WmN" firstAttribute="bottom" secondItem="hda-0C-iDW" secondAttribute="bottom" id="wHv-D1-gJr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Yzj-ea-WmN"/>
+                        <connections>
+                            <outlet property="rollButton" destination="hda-0C-iDW" id="A5L-4y-QRq"/>
+                        </connections>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rSA-HU-qIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="159" y="108"/>
+        </scene>
+    </scenes>
+</document>

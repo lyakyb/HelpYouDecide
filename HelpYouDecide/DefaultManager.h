@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const HelpYouDecideAllDecisionsTyped;
+extern NSString * const HelpYouDecideDecisionsNotTyped;
+extern NSString * const HelpYouDecideLetsRoll;
+extern NSString * const HelpYouDecideDecisionsPageLoaded;
+
 @interface DefaultManager : NSObject
 
 @property (nonatomic, assign) NSInteger numberOfDecisions;
+@property (nonatomic, readonly) NSArray *decisions;
 
 + (instancetype)sharedInstance;
+- (void)storeDecisionsFromArray:(NSArray *)decisions;
 
 @end

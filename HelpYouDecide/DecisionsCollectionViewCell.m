@@ -16,16 +16,6 @@
 
 @implementation DecisionsCollectionViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    self.backgroundColor = [UIColor blueColor];
-}
-
-- (void)prepareForReuse {
-    [super prepareForReuse];
-    self.backgroundColor = [UIColor blueColor];
-}
-
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
 }

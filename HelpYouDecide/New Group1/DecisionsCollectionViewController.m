@@ -22,8 +22,7 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"DecisionsFooter"];
-    
+
     self.decisions = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
     
     NSLog(@"DecisionsCollectionVC ViewDidLoad");
@@ -96,7 +95,7 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     UICollectionReusableView *emptyView = [UICollectionReusableView new];
     NSLog(@"Number of Decisions: %ld", [[DefaultManager sharedInstance] numberOfDecisions]);
     if(indexPath.section == DecisionsCollectionViewSectionFooter){
-        UICollectionReusableView *reusableView = (id)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"DecisionsFooter" forIndexPath:indexPath];
+        DecisionsFooterView *reusableView = (id)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"DecisionsFooter" forIndexPath:indexPath];
         return reusableView;
     }
     

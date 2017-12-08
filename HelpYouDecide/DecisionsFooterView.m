@@ -8,7 +8,18 @@
 
 #import "DecisionsFooterView.h"
 
+@interface DecisionsFooterView ()
+
+@property (nonatomic, weak) IBOutlet UIButton *rollButton;
+
+@end
+
 @implementation DecisionsFooterView
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.rollButton.layer.cornerRadius = 30;
+    self.rollButton.clipsToBounds = YES;
+}
 
 @end

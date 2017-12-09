@@ -20,11 +20,9 @@
     return self.textField.text;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    
-}
-- (IBAction)textFieldDIdEndEditing:(id)sender {
-    NSLog(@"did end editing");
+- (IBAction)textFieldDidEndEditing:(id)sender {
+    [self.delegate decisionUpdatedFromCell:self];
+    NSLog(@"text length now: %lu", self.textField.text.length);
 }
 
 - (void)textFieldDidBeingEditing:(UITextField *)textField {
@@ -39,5 +37,8 @@
     [self.textField resignFirstResponder];
 }
 
+- (BOOL)hasInput {
+    return self.textField.text.length > 0;
+}
 
 @end

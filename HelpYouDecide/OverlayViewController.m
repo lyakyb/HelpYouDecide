@@ -24,6 +24,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(decisionInputUnfinished) name:HelpYouDecideDecisionsNotTyped object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOverlay) name:HelpYouDecideDecisionsPageLoaded object:nil];
     [self.view disableRollButton];
+    [self.view hideRollButton];
 }
 
 - (void)viewDidLoad {
@@ -36,10 +37,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HelpYouDecideAllDecisionsTyped object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HelpYouDecideDecisionsNotTyped object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HelpYouDecideDecisionsPageLoaded object:nil];
-
 }
 
 - (void)showOverlay {
+    [self.view showRollButton];
 }
 
 - (void)didReceiveMemoryWarning {

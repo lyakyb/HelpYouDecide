@@ -12,9 +12,10 @@
 #import "DefaultManager.h"
 #import "DecisionsCollectionViewCell.h"
 
-@interface DecisionsCollectionViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout>
+@interface DecisionsCollectionViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout, DecisionsCollectionViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *decisionCells;
+@property (nonatomic, strong) NSMutableDictionary *decisions;
 
 @end
 
@@ -25,7 +26,7 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.decisions = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
+    self.decisionCells = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
     
     
     
@@ -35,31 +36,48 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     NSLog(@"HelpYouDecideDecisionsPageLoaded Posted");
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HelpYouDecideLetsRoll object:nil];
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DecisionsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     //Holding reference to cells for later use
     [self.decisionCells addObject:cell];
+    cell.delegate = self;
     
     return cell;
 }
 
 - (void)saveAllDecisionsAndRoll {
+    NSMutableArray *decisions = [NSMutableArray arrayWithCapacity:self.decisionCells.count];
+    
     for (DecisionsCollectionViewCell *cell in self.decisionCells) {
-        [self.decisions addObject:cell.decision];
+        [decisions addObject:cell.decision];
     }
     
-    [[DefaultManager sharedInstance] storeDecisionsFromArray:self.decisions];
-    
+    [[DefaultManager sharedInstance] storeDecisionsFromArray:decisions];
     [self performSegueWithIdentifier:@"LetsRollSegue" sender:nil];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"textField Did End editing");
+- (void)decisionUpdatedFromCell:(DecisionsCollectionViewCell *)cell {
+//    NSString *index = [NSString stringWithFormat:@"%lu", (unsigned long)[self.decisionCells indexOfObject:cell]];
+//    
+//    [self.decisions setObject:[NSNumber numberWithBool:[cell hasInput]] forKey:index];
+    BOOL allDecisionsEntered = YES;
+    for (DecisionsCollectionViewCell *cell in self.decisionCells) {
+        if (!cell.hasInput) {
+            allDecisionsEntered = NO;
+        }
+    }
     
-    
+    if (allDecisionsEntered) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideAllDecisionsTyped object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsNotTyped object:nil];
+    }
 }
-
 
 #pragma mark <UICollectionViewDelegate>
 

@@ -130,7 +130,8 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <connections>
-                                                <action selector="textFieldDIdEndEditing:" destination="eLM-qY-oFE" eventType="editingDidEnd" id="dzX-jG-uXZ"/>
+                                                <action selector="textFieldDidEndEditing:" destination="eLM-qY-oFE" eventType="editingDidEnd" id="Uwg-Zh-Bmy"/>
+                                                <action selector="textFieldDidEndEditing:" destination="eLM-qY-oFE" eventType="valueChanged" id="jDZ-TN-ckx"/>
                                             </connections>
                                         </textField>
                                     </subviews>

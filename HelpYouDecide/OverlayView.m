@@ -26,6 +26,8 @@
     self.rollButton.backgroundColor = [UIColor colorWithRed:125.f/255.f green:125.f/255.f blue:125.f/255.f alpha:1.f];
     [self.rollButton setTitleColor:[self disabledTextColor] forState:UIControlStateNormal];
     self.rollButton.tintColor = [self disabledTextColor];
+    self.rollButton.alpha = 0.f;
+    self.rollButton.enabled = NO;
     
 }
 
@@ -59,6 +61,7 @@
             weakSelf.rollButton.alpha = 1.f;
         } completion:^(BOOL finished) {
             weakSelf.hidden = NO;
+            weakSelf.rollButton.enabled = YES;
         }];
     });
 }
@@ -70,6 +73,7 @@
             weakSelf.rollButton.alpha = 0.f;
         } completion:^(BOOL finished) {
             weakSelf.hidden = YES;
+            weakSelf.rollButton.enabled = NO;
         }];
     });
 }

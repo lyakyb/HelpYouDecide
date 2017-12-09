@@ -16,6 +16,4 @@ typedef enum {
 
 @interface DecisionsCollectionViewController : UICollectionViewController
 
-@property (nonatomic, strong) NSMutableArray *decisions;
-
 @end

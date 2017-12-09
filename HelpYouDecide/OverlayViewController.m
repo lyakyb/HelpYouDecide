@@ -37,6 +37,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HelpYouDecideAllDecisionsTyped object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HelpYouDecideDecisionsNotTyped object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HelpYouDecideDecisionsPageLoaded object:nil];
+    [self.view.window setUserInteractionEnabled:NO];
 }
 
 - (void)showOverlay {
@@ -71,6 +72,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideLetsRoll object:nil];
     [self.view hideRollButton];
     [self.view disableRollButton];
+    [self.view.window setUserInteractionEnabled:NO];
 }
 
 @end

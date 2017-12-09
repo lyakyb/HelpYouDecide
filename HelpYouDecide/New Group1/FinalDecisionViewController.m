@@ -9,9 +9,10 @@
 #import "FinalDecisionViewController.h"
 #import "DefaultManager.h"
 
-@interface FinalDecisionViewController ()
+@interface FinalDecisionViewController () <FinalDecisionViewDelegate>
 
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, strong) NSTimer *retryTimer;
 
 @end
 
@@ -22,12 +23,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.finalDecision = [[DefaultManager sharedInstance] finalDecision];
+    self.view.delegate = self;
     
+    [self.view.window makeKeyWindow];
+    [self.view.window makeKeyAndVisible];
     
 }
 
 - (void)dealloc {
     [self.timer invalidate];
+    [self.retryTimer invalidate];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -44,6 +49,22 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)noButtonPressed {
+    [self.view hideRetrySuggestion];
+}
+
+- (void)yesButtonPressed {
+}
+
+- (void)decisionAppeared {
+    __weak typeof(self) weakSelf = self;
+    self.retryTimer = [NSTimer timerWithTimeInterval:3.f repeats:NO block:^(NSTimer * _Nonnull timer) {
+        [weakSelf.view showRetrySuggestion];
+        NSLog(@"show final decision");
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:self.retryTimer forMode:NSRunLoopCommonModes];
 }
 
 /*

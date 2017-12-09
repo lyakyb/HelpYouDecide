@@ -8,11 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FinalDecisionViewDelegate
+
+- (void)noButtonPressed;
+- (void)yesButtonPressed;
+- (void)decisionAppeared;
+
+@end
+
 @interface FinalDecisionView : UIView
 
 @property (nonatomic, strong) NSString *finalDecision;
+@property (nonatomic, weak) id<FinalDecisionViewDelegate> delegate;
 
 - (void)showWinningDecisionLabel;
 - (void)showFinalDecision;
+- (void)showRetrySuggestion;
+- (void)hideRetrySuggestion;
 
 @end

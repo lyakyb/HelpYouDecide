@@ -60,6 +60,7 @@
 
 - (void)decisionInputFinished {
     [self.view enableRollButton];
+    [self.view.window setUserInteractionEnabled:YES];
 }
 
 - (void)decisionInputUnfinished {
@@ -68,6 +69,8 @@
 
 - (void)didPressRollButton {
     [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideLetsRoll object:nil];
+    [self.view hideRollButton];
+    [self.view disableRollButton];
 }
 
 @end

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FinalDecisionView.h"
 
 @interface FinalDecisionViewController : UIViewController
+
+@property (nonatomic, strong) FinalDecisionView *view;
 
 @end

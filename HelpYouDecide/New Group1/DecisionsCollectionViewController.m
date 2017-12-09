@@ -12,7 +12,7 @@
 #import "DefaultManager.h"
 #import "DecisionsCollectionViewCell.h"
 
-@interface DecisionsCollectionViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout, DecisionsCollectionViewCellDelegate>
+@interface DecisionsCollectionViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSMutableArray *decisionCells;
 @property (nonatomic, strong) NSMutableDictionary *decisions;
@@ -45,7 +45,6 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     
     //Holding reference to cells for later use
     [self.decisionCells addObject:cell];
-    cell.delegate = self;
     
     return cell;
 }
@@ -57,14 +56,13 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
         [decisions addObject:cell.decision];
     }
     
-    [[DefaultManager sharedInstance] storeDecisionsFromArray:decisions];
+    [[DefaultManager sharedInstance] storeDecisionsAndRollFromArray:decisions];
+    
     [self performSegueWithIdentifier:@"LetsRollSegue" sender:nil];
+    NSLog(@"LetsRollSegue Performed");
 }
 
-- (void)decisionUpdatedFromCell:(DecisionsCollectionViewCell *)cell {
-//    NSString *index = [NSString stringWithFormat:@"%lu", (unsigned long)[self.decisionCells indexOfObject:cell]];
-//    
-//    [self.decisions setObject:[NSNumber numberWithBool:[cell hasInput]] forKey:index];
+- (void)decisionUpdatedFromCell {
     BOOL allDecisionsEntered = YES;
     for (DecisionsCollectionViewCell *cell in self.decisionCells) {
         if (!cell.hasInput) {
@@ -110,20 +108,20 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 }
 */
 
-//#pragma mark - UITextFieldDelegate
-//
-//- (void)textFieldDidEndEditing:(UITextField *)textField {
-//}
-//
-//- (void)textFieldDidBeginEditing:(UITextField *)textField {
-//    NSLog(@"Text field begun editing");
-//}
-//
-//- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-//    [textField endEditing:YES];
-//    return YES;
-//}
+#pragma mark - UITextFieldDelegate
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self decisionUpdatedFromCell];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSLog(@"Text field begun editing");
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField endEditing:YES];
+    return YES;
+}
 
 #pragma mark <UICollectionViewDataSource>
 

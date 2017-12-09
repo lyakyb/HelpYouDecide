@@ -79,6 +79,7 @@
 }
 
 - (IBAction)rollButtonPressed:(id)sender{
+    NSLog(@"Roll Button Pressed");
     [self.delegate didPressRollButton];
 }
 

@@ -17,8 +17,9 @@ extern NSString * const HelpYouDecideDecisionsPageLoaded;
 
 @property (nonatomic, assign) NSInteger numberOfDecisions;
 @property (nonatomic, readonly) NSArray *decisions;
+@property (nonatomic, readonly) NSString *finalDecision;
 
 + (instancetype)sharedInstance;
-- (void)storeDecisionsFromArray:(NSArray *)decisions;
+- (void)storeDecisionsAndRollFromArray:(NSArray *)decisions;
 
 @end

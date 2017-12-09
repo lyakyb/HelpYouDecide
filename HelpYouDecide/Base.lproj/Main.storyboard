@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="ChalkboardSE.ttc">
+            <string>ChalkboardSE-Regular</string>
+        </array>
         <array key="TrebuchetMSItalic.ttf">
             <string>TrebuchetMS-Italic</string>
         </array>
@@ -128,10 +131,9 @@
                                             <rect key="frame" x="20" y="0.0" width="355" height="75"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
-                                                <action selector="textFieldDidEndEditing:" destination="eLM-qY-oFE" eventType="editingDidEnd" id="Uwg-Zh-Bmy"/>
-                                                <action selector="textFieldDidEndEditing:" destination="eLM-qY-oFE" eventType="valueChanged" id="jDZ-TN-ckx"/>
+                                                <outlet property="delegate" destination="I1l-iq-sO5" id="LhA-I5-9e9"/>
                                             </connections>
                                         </textField>
                                     </subviews>
@@ -165,11 +167,40 @@
         <scene sceneID="pNx-4k-R5z">
             <objects>
                 <viewController id="liQ-wC-lbg" customClass="FinalDecisionViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lOK-ed-aE5">
+                    <view key="view" contentMode="scaleToFill" id="lOK-ed-aE5" customClass="FinalDecisionView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Winning Decision is" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDf-sv-bDL">
+                                <rect key="frame" x="-0.5" y="80" width="375" height="54"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="38"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYW-od-Cp5">
+                                <rect key="frame" x="-0.5" y="234" width="375" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="6t9-ub-uG6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JDf-sv-bDL" firstAttribute="top" secondItem="Abi-p6-PoK" secondAttribute="top" constant="60" id="GSw-Li-9Sg"/>
+                            <constraint firstItem="JDf-sv-bDL" firstAttribute="centerX" secondItem="Abi-p6-PoK" secondAttribute="centerX" id="Pyw-rs-OTM"/>
+                            <constraint firstItem="yYW-od-Cp5" firstAttribute="width" secondItem="lOK-ed-aE5" secondAttribute="width" id="UYh-HN-x4X"/>
+                            <constraint firstItem="yYW-od-Cp5" firstAttribute="centerX" secondItem="JDf-sv-bDL" secondAttribute="centerX" id="UfM-2i-N2s"/>
+                            <constraint firstItem="yYW-od-Cp5" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="bottom" priority="750" constant="100" id="bDL-Hq-94n"/>
+                            <constraint firstItem="JDf-sv-bDL" firstAttribute="width" secondItem="lOK-ed-aE5" secondAttribute="width" id="ioA-xg-LPM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Abi-p6-PoK"/>
+                        <connections>
+                            <outlet property="finalDecisionLabel" destination="yYW-od-Cp5" id="xLJ-T5-y6g"/>
+                            <outlet property="winningDecisionLabel" destination="JDf-sv-bDL" id="ATj-UY-qOe"/>
+                        </connections>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKb-1x-LNJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

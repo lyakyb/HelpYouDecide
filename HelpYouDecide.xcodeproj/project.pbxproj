@@ -25,6 +25,7 @@
 		8EF4FB281FDA7AF400D39055 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB271FDA7AF400D39055 /* OverlayViewController.m */; };
 		8EF4FB2B1FDA7BAD00D39055 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB2A1FDA7BAD00D39055 /* OverlayView.m */; };
 		8EF4FB2D1FDB2F0000D39055 /* Overlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EF4FB2C1FDB2F0000D39055 /* Overlay.storyboard */; };
+		8EF4FB301FDBA87800D39055 /* FinalDecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB2F1FDBA87800D39055 /* FinalDecisionView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		8EF4FB291FDA7BAD00D39055 /* OverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		8EF4FB2A1FDA7BAD00D39055 /* OverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
 		8EF4FB2C1FDB2F0000D39055 /* Overlay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Overlay.storyboard; sourceTree = "<group>"; };
+		8EF4FB2E1FDBA87800D39055 /* FinalDecisionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinalDecisionView.h; sourceTree = "<group>"; };
+		8EF4FB2F1FDBA87800D39055 /* FinalDecisionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalDecisionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				8EF4FB261FDA7AF400D39055 /* OverlayViewController.h */,
 				8EF4FB291FDA7BAD00D39055 /* OverlayView.h */,
 				8EF4FB2A1FDA7BAD00D39055 /* OverlayView.m */,
+				8EF4FB2E1FDBA87800D39055 /* FinalDecisionView.h */,
+				8EF4FB2F1FDBA87800D39055 /* FinalDecisionView.m */,
 				8EF4FB271FDA7AF400D39055 /* OverlayViewController.m */,
 				8EF4FB1C1FD9137D00D39055 /* DecisionsCollectionViewCell.h */,
 				8EF4FB1D1FD9137D00D39055 /* DecisionsCollectionViewCell.m */,
@@ -284,6 +289,7 @@
 				8EA6D6BE1FD7D1DA00DF56FA /* HesitationCollectionViewController.m in Sources */,
 				8EF4FB1B1FD9133800D39055 /* DecisionsCollectionView.m in Sources */,
 				8EF4FB2B1FDA7BAD00D39055 /* OverlayView.m in Sources */,
+				8EF4FB301FDBA87800D39055 /* FinalDecisionView.m in Sources */,
 				8EA6D6951FD6E55D00DF56FA /* main.m in Sources */,
 				8EF4FB281FDA7AF400D39055 /* OverlayViewController.m in Sources */,
 				8EA6D6B81FD7CA4300DF56FA /* FinalDecisionViewController.m in Sources */,
@@ -440,6 +446,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 432URDKEZR;
 				INFOPLIST_FILE = HelpYouDecide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YBK.HelpYouDecide;
@@ -453,6 +460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 432URDKEZR;
 				INFOPLIST_FILE = HelpYouDecide/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YBK.HelpYouDecide;

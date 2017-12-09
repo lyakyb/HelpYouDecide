@@ -8,17 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class DecisionsCollectionViewCell;
-@protocol DecisionsCollectionViewCellDelegate
-
-- (void)decisionUpdatedFromCell:(DecisionsCollectionViewCell *)cell;
-
-@end
-
 @interface DecisionsCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) NSString *decision;
-@property (nonatomic, weak) id<DecisionsCollectionViewCellDelegate> delegate;
 
 - (BOOL)hasInput;
 - (void)displayKeyboard;

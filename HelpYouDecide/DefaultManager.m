@@ -16,6 +16,7 @@ NSString * const HelpYouDecideDecisionsPageLoaded = @"HelpYouDecideDecisionsPage
 @interface DefaultManager ()
 
 @property (nonatomic, readwrite) NSArray *decisions;
+@property (nonatomic, readwrite) NSString *finalDecision;
 
 @end
 
@@ -30,8 +31,27 @@ NSString * const HelpYouDecideDecisionsPageLoaded = @"HelpYouDecideDecisionsPage
     return sharedInstance;
 }
 
-- (void)storeDecisionsFromArray:(NSArray *)decisions {
+- (void)storeDecisionsAndRollFromArray:(NSArray *)decisions {
+    NSLog(@"Rolling the dice!");
     self.decisions = decisions;
+    
+    //Rolling Mechanism. Scale size number of decisions * 25
+    static dispatch_once_t onceToken;
+    __weak typeof(self) weakSelf = self;
+    dispatch_once(&onceToken, ^{
+        NSInteger range = (weakSelf.numberOfDecisions * 25) + 1; //Lower bound +1 to elminate 0
+        int number = arc4random_uniform(range);
+        NSLog(@"Rolled Number: %li", number);
+        for (int i = 0; i < weakSelf.numberOfDecisions; i++) {
+            NSLog(@"Between %i and %i", (i*25)+1, (i+1)*25);
+            if ((i * 25)+1 < number && number <= (i + 1) * 25) {
+                weakSelf.finalDecision = [weakSelf.decisions objectAtIndex:i];
+                NSLog(@"Final Decision is: %@", weakSelf.finalDecision);
+            } else if (i==0) {
+                weakSelf.finalDecision = [weakSelf.decisions firstObject];
+            }
+        }
+    });
 }
 
 @end

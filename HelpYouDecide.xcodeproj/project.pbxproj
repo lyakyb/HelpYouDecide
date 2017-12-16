@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E9B936C1FE4A6DE00409BBD /* SharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B936B1FE4A6DE00409BBD /* SharedConstants.m */; };
+		8E9B93811FE541E000409BBD /* HelpYouDecideLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B93801FE541E000409BBD /* HelpYouDecideLayout.m */; };
 		8EA6D6871FD6E55D00DF56FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6861FD6E55D00DF56FA /* AppDelegate.m */; };
 		8EA6D68D1FD6E55D00DF56FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA6D68B1FD6E55D00DF56FA /* Main.storyboard */; };
 		8EA6D68F1FD6E55D00DF56FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA6D68E1FD6E55D00DF56FA /* Assets.xcassets */; };
@@ -23,9 +24,6 @@
 		8EF4FB1B1FD9133800D39055 /* DecisionsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB1A1FD9133800D39055 /* DecisionsCollectionView.m */; };
 		8EF4FB1E1FD9137D00D39055 /* DecisionsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB1D1FD9137D00D39055 /* DecisionsCollectionViewCell.m */; };
 		8EF4FB211FD937FE00D39055 /* DefaultManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB201FD937FE00D39055 /* DefaultManager.m */; };
-		8EF4FB281FDA7AF400D39055 /* OverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB271FDA7AF400D39055 /* OverlayViewController.m */; };
-		8EF4FB2B1FDA7BAD00D39055 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB2A1FDA7BAD00D39055 /* OverlayView.m */; };
-		8EF4FB2D1FDB2F0000D39055 /* Overlay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EF4FB2C1FDB2F0000D39055 /* Overlay.storyboard */; };
 		8EF4FB301FDBA87800D39055 /* FinalDecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB2F1FDBA87800D39055 /* FinalDecisionView.m */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +40,8 @@
 /* Begin PBXFileReference section */
 		8E9B936A1FE4A6DE00409BBD /* SharedConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedConstants.h; sourceTree = "<group>"; };
 		8E9B936B1FE4A6DE00409BBD /* SharedConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedConstants.m; sourceTree = "<group>"; };
+		8E9B937F1FE541E000409BBD /* HelpYouDecideLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpYouDecideLayout.h; sourceTree = "<group>"; };
+		8E9B93801FE541E000409BBD /* HelpYouDecideLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpYouDecideLayout.m; sourceTree = "<group>"; };
 		8EA6D6821FD6E55D00DF56FA /* HelpYouDecide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpYouDecide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA6D6851FD6E55D00DF56FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EA6D6861FD6E55D00DF56FA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,11 +71,6 @@
 		8EF4FB1D1FD9137D00D39055 /* DecisionsCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecisionsCollectionViewCell.m; sourceTree = "<group>"; };
 		8EF4FB1F1FD937FE00D39055 /* DefaultManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultManager.h; sourceTree = "<group>"; };
 		8EF4FB201FD937FE00D39055 /* DefaultManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultManager.m; sourceTree = "<group>"; };
-		8EF4FB261FDA7AF400D39055 /* OverlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayViewController.h; sourceTree = "<group>"; };
-		8EF4FB271FDA7AF400D39055 /* OverlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverlayViewController.m; sourceTree = "<group>"; };
-		8EF4FB291FDA7BAD00D39055 /* OverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
-		8EF4FB2A1FDA7BAD00D39055 /* OverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
-		8EF4FB2C1FDB2F0000D39055 /* Overlay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Overlay.storyboard; sourceTree = "<group>"; };
 		8EF4FB2E1FDBA87800D39055 /* FinalDecisionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinalDecisionView.h; sourceTree = "<group>"; };
 		8EF4FB2F1FDBA87800D39055 /* FinalDecisionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalDecisionView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +96,8 @@
 		8EA6D6791FD6E55D00DF56FA = {
 			isa = PBXGroup;
 			children = (
+				8E9B937F1FE541E000409BBD /* HelpYouDecideLayout.h */,
+				8E9B93801FE541E000409BBD /* HelpYouDecideLayout.m */,
 				8E9B936A1FE4A6DE00409BBD /* SharedConstants.h */,
 				8E9B936B1FE4A6DE00409BBD /* SharedConstants.m */,
 				8EA6D6841FD6E55D00DF56FA /* HelpYouDecide */,
@@ -132,14 +129,9 @@
 				8EA6D6B11FD6EE2200DF56FA /* Views */,
 				8EA6D6851FD6E55D00DF56FA /* AppDelegate.h */,
 				8EA6D6861FD6E55D00DF56FA /* AppDelegate.m */,
-				8EF4FB2C1FDB2F0000D39055 /* Overlay.storyboard */,
 				8EA6D68B1FD6E55D00DF56FA /* Main.storyboard */,
-				8EF4FB261FDA7AF400D39055 /* OverlayViewController.h */,
-				8EF4FB291FDA7BAD00D39055 /* OverlayView.h */,
-				8EF4FB2A1FDA7BAD00D39055 /* OverlayView.m */,
 				8EF4FB2E1FDBA87800D39055 /* FinalDecisionView.h */,
 				8EF4FB2F1FDBA87800D39055 /* FinalDecisionView.m */,
-				8EF4FB271FDA7AF400D39055 /* OverlayViewController.m */,
 				8EF4FB1C1FD9137D00D39055 /* DecisionsCollectionViewCell.h */,
 				8EF4FB1D1FD9137D00D39055 /* DecisionsCollectionViewCell.m */,
 				8EF4FB1F1FD937FE00D39055 /* DefaultManager.h */,
@@ -269,7 +261,6 @@
 				8EA6D6921FD6E55D00DF56FA /* LaunchScreen.storyboard in Resources */,
 				8EA6D68F1FD6E55D00DF56FA /* Assets.xcassets in Resources */,
 				8EA6D68D1FD6E55D00DF56FA /* Main.storyboard in Resources */,
-				8EF4FB2D1FDB2F0000D39055 /* Overlay.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,15 +280,14 @@
 			files = (
 				8EA6D6C11FD7DE2600DF56FA /* HesitationCollectionViewCell.m in Sources */,
 				8EA6D6B51FD7CA1000DF56FA /* DecisionsCollectionViewController.m in Sources */,
+				8E9B93811FE541E000409BBD /* HelpYouDecideLayout.m in Sources */,
 				8EA6D6B01FD6EE1800DF56FA /* HesitationView.m in Sources */,
 				8EF4FB181FD8EB3400D39055 /* DecisionsFooterView.m in Sources */,
 				8EA6D6BE1FD7D1DA00DF56FA /* HesitationCollectionViewController.m in Sources */,
 				8EF4FB1B1FD9133800D39055 /* DecisionsCollectionView.m in Sources */,
-				8EF4FB2B1FDA7BAD00D39055 /* OverlayView.m in Sources */,
 				8EF4FB301FDBA87800D39055 /* FinalDecisionView.m in Sources */,
 				8E9B936C1FE4A6DE00409BBD /* SharedConstants.m in Sources */,
 				8EA6D6951FD6E55D00DF56FA /* main.m in Sources */,
-				8EF4FB281FDA7AF400D39055 /* OverlayViewController.m in Sources */,
 				8EA6D6B81FD7CA4300DF56FA /* FinalDecisionViewController.m in Sources */,
 				8EF4FB1E1FD9137D00D39055 /* DecisionsCollectionViewCell.m in Sources */,
 				8EA6D6871FD6E55D00DF56FA /* AppDelegate.m in Sources */,

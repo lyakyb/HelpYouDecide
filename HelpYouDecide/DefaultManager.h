@@ -17,5 +17,6 @@
 
 + (instancetype)sharedInstance;
 - (void)storeDecisionsAndRollFromArray:(NSArray *)decisions;
+- (void)clearDecisions;
 
 @end

@@ -113,10 +113,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nc4-Qs-HzE">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nc4-Qs-HzE" customClass="HelpYouDecideLayout">
                             <size key="itemSize" width="375" height="75"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="50" height="100"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
@@ -150,6 +150,39 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DecisionsFooterView" id="gxQ-qU-0Pf" customClass="DecisionsFooterView">
+                            <rect key="frame" x="0.0" y="75" width="375" height="100"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D7w-Id-jxV">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <state key="normal">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content="Let's Roll! ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.20784313979999999" green="0.20784313979999999" blue="0.27450981740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="60" name="ChalkboardSE-Regular"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                    </state>
+                                    <connections>
+                                        <action selector="saveAllDecisionsAndRoll:" destination="I1l-iq-sO5" eventType="touchDown" id="O6r-eF-hgi"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="D7w-Id-jxV" firstAttribute="top" secondItem="gxQ-qU-0Pf" secondAttribute="top" id="1hh-Zc-x2x"/>
+                                <constraint firstItem="D7w-Id-jxV" firstAttribute="leading" secondItem="gxQ-qU-0Pf" secondAttribute="leading" id="8tv-zC-bTf"/>
+                                <constraint firstAttribute="trailing" secondItem="D7w-Id-jxV" secondAttribute="trailing" id="Bdw-er-Tlu"/>
+                                <constraint firstAttribute="bottom" secondItem="D7w-Id-jxV" secondAttribute="bottom" constant="20" id="lJs-da-jih"/>
+                                <constraint firstItem="D7w-Id-jxV" firstAttribute="centerX" secondItem="gxQ-qU-0Pf" secondAttribute="centerX" id="odK-T8-3SV"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="rollButton" destination="D7w-Id-jxV" id="I4P-LO-Mnt"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="I1l-iq-sO5" id="F3y-av-yg5"/>
                             <outlet property="delegate" destination="I1l-iq-sO5" id="xqs-WX-kQA"/>

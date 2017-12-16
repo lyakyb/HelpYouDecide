@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) NSMutableArray *decisionCells;
 @property (nonatomic, strong) NSMutableDictionary *decisions;
+@property (nonatomic, strong) DecisionsFooterView *footerView;
+@property (nonatomic, assign) BOOL footerNeedsUpdate;
 
 @end
 
@@ -29,16 +31,9 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 
     self.decisionCells = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
     
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveAllDecisionsAndRoll) name:HelpYouDecideLetsRoll object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsPageLoaded object:nil];
     
     NSLog(@"HelpYouDecideDecisionsPageLoaded Posted");
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:HelpYouDecideLetsRoll object:nil];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,7 +45,7 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     return cell;
 }
 
-- (void)saveAllDecisionsAndRoll {
+- (IBAction)saveAllDecisionsAndRoll:(id)sender {
     NSMutableArray *decisions = [NSMutableArray arrayWithCapacity:self.decisionCells.count];
     
     for (DecisionsCollectionViewCell *cell in self.decisionCells) {
@@ -68,46 +63,31 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     for (DecisionsCollectionViewCell *cell in self.decisionCells) {
         if (!cell.hasInput) {
             allDecisionsEntered = NO;
+            return;
         }
     }
-    
     if (allDecisionsEntered) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideAllDecisionsTyped object:nil];
+        NSLog(@"enabling roll button");
+        [self.footerView enableRollButton];
     } else {
-        [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsNotTyped object:nil];
+        NSLog(@"disabling roll button");
+        [self.footerView disableRollButton];
     }
 }
 
-#pragma mark <UICollectionViewDelegate>
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionReusableView *emptyView;
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        DecisionsFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"DecisionsFooterView" forIndexPath:indexPath];
+        self.footerView = footerView;
+        
+        return footerView;
+    }
+    
+    return emptyView;
 }
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 #pragma mark - UITextFieldDelegate
 
@@ -136,6 +116,15 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 
 
 #pragma mark <UICollectionViewDelegateFlowLayout>
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    
+    if (section == DecisionsCollectionViewSectionFooter) {
+        return CGSizeMake(self.collectionView.bounds.size.width, 100.0f);
+    }
+    
+    return CGSizeZero;
+}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(self.view.bounds.size.width, 75.0f);

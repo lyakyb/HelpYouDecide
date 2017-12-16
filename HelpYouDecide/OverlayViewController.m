@@ -8,6 +8,7 @@
 
 #import "OverlayViewController.h"
 #import "DefaultManager.h"
+#import "SharedConstants.h"
 
 @interface OverlayViewController () <OverlayViewDelegate>
 

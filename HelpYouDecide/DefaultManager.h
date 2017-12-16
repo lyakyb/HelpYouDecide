@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString * const HelpYouDecideAllDecisionsTyped;
-extern NSString * const HelpYouDecideDecisionsNotTyped;
-extern NSString * const HelpYouDecideLetsRoll;
-extern NSString * const HelpYouDecideDecisionsPageLoaded;
 
 @interface DefaultManager : NSObject
 

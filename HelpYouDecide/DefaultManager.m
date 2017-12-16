@@ -7,11 +7,8 @@
 //
 
 #import "DefaultManager.h"
+#import "SharedConstants.h"
 
-NSString * const HelpYouDecideAllDecisionsTyped = @"HelpYouDecideAllDecisionsTyped";
-NSString * const HelpYouDecideDecisionsNotTyped = @"HelpYouDecideDecisionNotTyped";
-NSString * const HelpYouDecideLetsRoll = @"HelpYouDecideLetsRoll";
-NSString * const HelpYouDecideDecisionsPageLoaded = @"HelpYouDecideDecisionsPageLoaded";
 
 @interface DefaultManager ()
 

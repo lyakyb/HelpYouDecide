@@ -11,6 +11,7 @@
 #import "DecisionsCollectionView.h"
 #import "DefaultManager.h"
 #import "DecisionsCollectionViewCell.h"
+#import "SharedConstants.h"
 
 @interface DecisionsCollectionViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout>
 

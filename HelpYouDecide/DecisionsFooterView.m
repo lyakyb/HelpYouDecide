@@ -61,7 +61,9 @@
             [weakSelf.rollButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         } completion:^(BOOL finished) {
             [weakSelf.rollButton setUserInteractionEnabled:YES];
+#ifdef DEBUG
             NSLog(@"user interaction enabled to YES");
+#endif
         }];
     });
 }

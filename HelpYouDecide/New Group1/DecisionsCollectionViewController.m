@@ -32,8 +32,6 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     self.decisionCells = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsPageLoaded object:nil];
-    
-    NSLog(@"HelpYouDecideDecisionsPageLoaded Posted");
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,7 +53,9 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     [[DefaultManager sharedInstance] storeDecisionsAndRollFromArray:decisions];
     
     [self performSegueWithIdentifier:@"LetsRollSegue" sender:nil];
+#ifdef DEBUG
     NSLog(@"LetsRollSegue Performed");
+#endif
 }
 
 - (void)decisionUpdatedFromCell {
@@ -68,9 +68,13 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     }
     if (allDecisionsEntered) {
         NSLog(@"enabling roll button");
+#ifdef DEBUG
         [self.footerView enableRollButton];
+#endif
     } else {
+#ifdef DEBUG
         NSLog(@"disabling roll button");
+#endif
         [self.footerView disableRollButton];
     }
 }
@@ -96,7 +100,9 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
+#ifdef DEBUG
     NSLog(@"Text field begun editing");
+#endif
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

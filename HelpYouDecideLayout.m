@@ -58,7 +58,9 @@
     
     attributes.center = CGPointMake(CGRectGetMidX(currentBounds), [[UIScreen mainScreen] bounds].size.height - currentBounds.size.height);
     
+#ifdef DEBUG
     NSLog(@"Updated footer attributes");
+#endif
 }
 
 

@@ -41,7 +41,9 @@
     __weak typeof(self) weakSelf = self;
     self.timer = [NSTimer timerWithTimeInterval:4.f repeats:NO block:^(NSTimer * _Nonnull timer) {
         [weakSelf.view showFinalDecision];
+#ifdef DEBUG
         NSLog(@"show final decision");
+#endif
     }];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
@@ -63,7 +65,9 @@
     __weak typeof(self) weakSelf = self;
     self.retryTimer = [NSTimer timerWithTimeInterval:3.f repeats:NO block:^(NSTimer * _Nonnull timer) {
         [weakSelf.view showRetrySuggestion];
+#ifdef DEBUG
         NSLog(@"show final decision");
+#endif
     }];
     [[NSRunLoop mainRunLoop] addTimer:self.retryTimer forMode:NSRunLoopCommonModes];
 }

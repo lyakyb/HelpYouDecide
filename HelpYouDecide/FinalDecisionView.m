@@ -113,12 +113,16 @@
 }
 
 - (IBAction)noButtonPressed:(id)sender{
+#ifdef DEBUG
     NSLog(@"No Button Pressed");
+#endif
     [self.delegate noButtonPressed];
 }
 
 - (IBAction)yesButtonPressed:(id)sender{
+#ifdef DEBUG
     NSLog(@"Yes Button Pressed");
+#endif
     [self.delegate yesButtonPressed];
 }
 

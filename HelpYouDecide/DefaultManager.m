@@ -33,19 +33,26 @@
     if (self.hasRolled) {
         return;
     }
-    
+#ifdef DEBUG
     NSLog(@"Rolling the dice!");
+#endif
     self.decisions = decisions;
     
     //Rolling Mechanism. Scale size number of decisions * 25
     NSInteger range = (self.numberOfDecisions * 25) + 1; //Lower bound +1 to elminate 0
     int number = arc4random_uniform(range);
+#ifdef DEBUG
     NSLog(@"Rolled Number: %li", number);
+#endif
     for (int i = 0; i < self.numberOfDecisions; i++) {
+#ifdef DEBUG
         NSLog(@"Between %i and %i", (i*25)+1, (i+1)*25);
+#endif
         if ((i * 25)+1 < number && number <= (i + 1) * 25) {
             self.finalDecision = [self.decisions objectAtIndex:i];
+#ifdef DEBUG
             NSLog(@"Final Decision is: %@", self.finalDecision);
+#endif
         } else if (i==0) {
             self.finalDecision = [self.decisions firstObject];
         }

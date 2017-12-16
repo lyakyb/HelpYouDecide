@@ -29,7 +29,9 @@
 }
 
 - (BOOL)hasInput {
+#ifdef DEBUG
     NSLog(@"text : %@", self.textField.text);
+#endif
     return self.textField.text.length > 0;
 }
 

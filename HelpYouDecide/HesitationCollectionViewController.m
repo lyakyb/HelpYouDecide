@@ -94,7 +94,9 @@ static NSString * const reuseIdentifier = @"DecisionCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [DefaultManager sharedInstance].numberOfDecisions = indexPath.item + 2;
     [self performSegueWithIdentifier:@"ShowDecisions" sender:self];
+#ifdef DEBUG
     NSLog(@"Performing ShowDecisions Segue");
+#endif
 }
 
 

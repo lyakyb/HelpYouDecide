@@ -56,6 +56,7 @@
 }
 
 - (void)yesButtonPressed {
+    [[DefaultManager sharedInstance] clearDecisions];
 }
 
 - (void)decisionAppeared {

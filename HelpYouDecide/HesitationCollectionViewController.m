@@ -17,7 +17,7 @@
 
 @end
 
-static const int NUMBER_OF_ITEMS = 6;
+static const int NUMBER_OF_ITEMS = 5;
 static const NSInteger kIphoneNonPlusWidth = 375;
 static const NSInteger kIphonePlusWidth = 414;
 static const NSInteger kIpodTouchWidth = 320;
@@ -77,6 +77,10 @@ static NSString * const reuseIdentifier = @"DecisionCell";
     
     cell.numberOfDecisions = !indexPath.item ? 0 : indexPath.item;
 
+    if (indexPath.item + 1 == NUMBER_OF_ITEMS) {
+        [cell hideLine];
+    }
+    
     return cell;
 }
 
@@ -142,7 +146,7 @@ static NSString * const reuseIdentifier = @"DecisionCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.view.bounds.size.width, (self.view.bounds.size.height - 200) / 7);
+    return CGSizeMake(self.view.bounds.size.width, (self.view.bounds.size.height - 200) / 6);
 }
 
 

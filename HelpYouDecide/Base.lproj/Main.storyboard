@@ -47,17 +47,28 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbN-dR-AC0">
+                                            <rect key="frame" x="103" y="73" width="169" height="2"/>
+                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="2" id="h5c-0w-fph"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="XbN-dR-AC0" secondAttribute="bottom" id="4Uq-tz-AyP"/>
                                     <constraint firstItem="ZMO-N5-Xr7" firstAttribute="height" secondItem="ZTh-E4-4g0" secondAttribute="height" id="8bm-FL-DwC"/>
+                                    <constraint firstItem="XbN-dR-AC0" firstAttribute="centerX" secondItem="ZTh-E4-4g0" secondAttribute="centerX" id="MFa-Hz-oJB"/>
                                     <constraint firstItem="ZMO-N5-Xr7" firstAttribute="centerY" secondItem="ZTh-E4-4g0" secondAttribute="centerY" id="Oax-xg-i7x"/>
+                                    <constraint firstItem="XbN-dR-AC0" firstAttribute="width" secondItem="ZTh-E4-4g0" secondAttribute="width" multiplier="0.45" constant="0.45000000000000001" id="X9o-sp-rd0"/>
                                     <constraint firstItem="ZMO-N5-Xr7" firstAttribute="centerX" secondItem="ZTh-E4-4g0" secondAttribute="centerX" id="cGM-5d-aHf"/>
                                     <constraint firstItem="ZMO-N5-Xr7" firstAttribute="width" secondItem="ZTh-E4-4g0" secondAttribute="width" id="sg3-5C-7vh"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="label" destination="ZMO-N5-Xr7" id="auI-NH-m9c"/>
+                                    <outlet property="lineView" destination="XbN-dR-AC0" id="igs-3Z-42w"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -77,6 +88,13 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbv-Wh-I83">
+                                    <rect key="frame" x="37" y="198" width="300" height="2"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="2" id="cFf-pN-3E2"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -86,8 +104,11 @@
                                 <constraint firstItem="eFf-9P-Og6" firstAttribute="centerX" secondItem="UfT-bR-XP5" secondAttribute="centerX" id="ERI-hq-nXk"/>
                                 <constraint firstItem="eFf-9P-Og6" firstAttribute="leading" secondItem="UfT-bR-XP5" secondAttribute="leading" id="FUd-xD-xmO"/>
                                 <constraint firstItem="DMX-Tl-Ggu" firstAttribute="centerX" secondItem="UfT-bR-XP5" secondAttribute="centerX" id="Fuz-jx-FcE"/>
+                                <constraint firstItem="tbv-Wh-I83" firstAttribute="centerX" secondItem="UfT-bR-XP5" secondAttribute="centerX" id="I8T-yp-wld"/>
                                 <constraint firstAttribute="trailing" secondItem="eFf-9P-Og6" secondAttribute="trailing" id="JY9-r6-t2v"/>
                                 <constraint firstItem="DMX-Tl-Ggu" firstAttribute="leading" secondItem="UfT-bR-XP5" secondAttribute="leading" id="Vj6-hE-je2"/>
+                                <constraint firstItem="tbv-Wh-I83" firstAttribute="width" secondItem="UfT-bR-XP5" secondAttribute="width" multiplier="0.8" id="cgb-ir-whS"/>
+                                <constraint firstAttribute="bottom" secondItem="tbv-Wh-I83" secondAttribute="bottom" id="m7Z-x1-hqX"/>
                                 <constraint firstAttribute="trailing" secondItem="DMX-Tl-Ggu" secondAttribute="trailing" id="tJX-dg-mtz"/>
                                 <constraint firstItem="eFf-9P-Og6" firstAttribute="top" secondItem="UfT-bR-XP5" secondAttribute="top" id="uvF-Sl-ccS"/>
                             </constraints>

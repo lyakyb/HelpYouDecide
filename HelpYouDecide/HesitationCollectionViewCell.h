@@ -12,4 +12,6 @@
 
 @property (nonatomic, assign) NSInteger numberOfDecisions;
 
+- (void)hideLine;
+
 @end

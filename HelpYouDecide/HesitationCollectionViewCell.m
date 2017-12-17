@@ -11,6 +11,7 @@
 @interface HesitationCollectionViewCell ()
 
 @property (nonatomic, weak) IBOutlet UILabel *label;
+@property (nonatomic, weak) IBOutlet UIView *lineView;
 
 @end
 
@@ -27,11 +28,11 @@
 }
 
 - (void)setNumberOfDecisions:(NSInteger)numberOfDecisions {
-    if (numberOfDecisions == 5) {
-        self.label.text = @"6+";
-    } else {
-        self.label.text = [NSString stringWithFormat:@"%ld", numberOfDecisions +2];
-    }
+    self.label.text = [NSString stringWithFormat:@"%ld", numberOfDecisions +2];
+}
+
+- (void)hideLine {
+    self.lineView.hidden = YES;
 }
 
 

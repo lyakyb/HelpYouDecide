@@ -11,7 +11,7 @@
 @protocol FinalDecisionViewDelegate
 
 - (void)noButtonPressed;
-- (void)yesButtonPressed;
+- (void)retryButtonPressed;
 - (void)decisionAppeared;
 
 @end

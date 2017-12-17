@@ -12,47 +12,39 @@
 
 @property (nonatomic, weak) IBOutlet UILabel *winningDecisionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *finalDecisionLabel;
-@property (nonatomic, weak) IBOutlet UILabel *retrySuggestionLabel;
-@property (nonatomic, weak) IBOutlet UIButton *noButton;
-@property (nonatomic, weak) IBOutlet UIButton *yesButton;
-@property (nonatomic, weak) IBOutlet UIView *transparentView;
+@property (nonatomic, weak) IBOutlet UIButton *retryButton;
 
 @end
+
+const CGFloat kRetryButtonHeight = 100.f;
 
 @implementation FinalDecisionView
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    CGRect originalBounds = self.retryButton.bounds;
+    originalBounds.size.width = [[UIScreen mainScreen] bounds].size.width;
+    [self.retryButton setBounds:originalBounds];
+
     [self.finalDecisionLabel setFont:[UIFont fontWithName:@"Chalkboard SE" size:40.f]];
     [self.winningDecisionLabel setAlpha:0.f];
     [self.finalDecisionLabel setAlpha:0.f];
-    [self roundAppropriateCorners];
     [self resetRetrySuggestion];
+    [self roundAppropriateCorners];
 }
+
+
 
 - (void)setRetryAlpha:(CGFloat)alpha {
-    [self.noButton setAlpha:alpha];
-    [self.yesButton setAlpha:alpha];
-    [self.retrySuggestionLabel setAlpha:alpha];
-    [self.transparentView setAlpha:alpha * 0.9];
-}
-
-- (void)unhideRetrySuggestion {
-    [self setRetryAlpha:1.f];
+    [self.retryButton setAlpha:alpha];
+//    [self.transparentView setAlpha:alpha * 0.9];
 }
 
 - (void)roundAppropriateCorners {
     CAShapeLayer *retryMaskLayer = [CAShapeLayer layer];
-    retryMaskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.retrySuggestionLabel.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:(CGSize){10.0, 10.0}].CGPath;
-    self.retrySuggestionLabel.layer.mask = retryMaskLayer;
-    
-    CAShapeLayer *noMaskLayer = [CAShapeLayer layer];
-    noMaskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.noButton.bounds byRoundingCorners:UIRectCornerBottomLeft cornerRadii:(CGSize){10.0, 10.0}].CGPath;
-    self.noButton.layer.mask = noMaskLayer;
-    
-    CAShapeLayer *yesMaskLayer = [CAShapeLayer layer];
-    yesMaskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.yesButton.bounds byRoundingCorners:UIRectCornerBottomRight cornerRadii:(CGSize){10.0, 10.0}].CGPath;
-    self.yesButton.layer.mask = yesMaskLayer;
+    retryMaskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.retryButton.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:(CGSize){10.0, 10.0}].CGPath;
+    self.retryButton.layer.mask = retryMaskLayer;
 }
 
 - (void)setFinalDecision:(NSString *)finalDecision {
@@ -61,11 +53,14 @@
 
 - (void)showRetrySuggestion {
     __weak typeof(self) weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:1.f animations:^{
-            [weakSelf unhideRetrySuggestion];
-        }];
-    });
+    [UIView animateWithDuration:2.f animations:^{
+        weakSelf.retryButton.frame = CGRectOffset(weakSelf.retryButton.frame, 0.0, -kRetryButtonHeight);
+        [weakSelf.retryButton setAlpha:1.f];
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [weakSelf.retryButton setEnabled:YES];
+        }
+    }];
 }
 
 - (void)hideRetrySuggestion {
@@ -78,7 +73,8 @@
 }
 
 - (void)resetRetrySuggestion {
-    [self setRetryAlpha:0.f];
+    [self.retryButton setAlpha:0.f];
+    [self.retryButton setEnabled:NO];
 }
 
 - (void)showWinningDecisionLabel {
@@ -112,18 +108,11 @@
     );
 }
 
-- (IBAction)noButtonPressed:(id)sender{
-#ifdef DEBUG
-    NSLog(@"No Button Pressed");
-#endif
-    [self.delegate noButtonPressed];
-}
-
 - (IBAction)yesButtonPressed:(id)sender{
 #ifdef DEBUG
     NSLog(@"Yes Button Pressed");
 #endif
-    [self.delegate yesButtonPressed];
+    [self.delegate retryButtonPressed];
 }
 
 

@@ -62,7 +62,12 @@
 }
 
 - (void)clearDecisions {
+#ifdef DEBUG
+    NSLog(@"clearing out decisions");
+#endif
+    self.finalDecision = nil;
     self.decisions = nil;
+    self.numberOfDecisions = 0;
 }
 
 @end

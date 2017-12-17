@@ -43,6 +43,12 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     return cell;
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    self.decisionCells = nil;
+    self.decisions = nil;
+}
+
 - (IBAction)saveAllDecisionsAndRoll:(id)sender {
     NSMutableArray *decisions = [NSMutableArray arrayWithCapacity:self.decisionCells.count];
     

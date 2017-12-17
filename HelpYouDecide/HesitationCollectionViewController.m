@@ -9,6 +9,7 @@
 #import "HesitationCollectionViewController.h"
 #import "HesitationCollectionViewCell.h"
 #import "DefaultManager.h"
+#import "FinalDecisionToHesitationCustomUnwindSegue.h"
 
 @interface HesitationCollectionViewController () <UICollectionViewDelegateFlowLayout>
 
@@ -146,9 +147,22 @@ static NSString * const reuseIdentifier = @"DecisionCell";
 
 
 - (IBAction)unwindToHesitationViewController:(UIStoryboardSegue*)segue {
+}
+
+- (IBAction)returnFromSegueAction:(UIStoryboardSegue *)sender {
     
 }
 
+- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
+
+    if ([identifier isEqualToString:@"FinalDecisionToHesitationUnwindSegue"]) {
+        FinalDecisionToHesitationCustomUnwindSegue *customSegue = [[FinalDecisionToHesitationCustomUnwindSegue alloc] initWithIdentifier:identifier source:fromViewController destination:toViewController];
+        return customSegue;
+    }
+    
+    return [super segueForUnwindingToViewController:toViewController fromViewController:fromViewController identifier:identifier];
+
+}
 
 
 @end

@@ -57,7 +57,7 @@
     [self.view hideRetrySuggestion];
 }
 
-- (void)yesButtonPressed {
+- (void)retryButtonPressed {
     [[DefaultManager sharedInstance] clearDecisions];
 }
 
@@ -70,6 +70,10 @@
 #endif
     }];
     [[NSRunLoop mainRunLoop] addTimer:self.retryTimer forMode:NSRunLoopCommonModes];
+}
+
+- (IBAction)showHesitationCollectionViewController:(id)sender {
+    [self performSegueWithIdentifier:@"unwind" sender:self];
 }
 
 /*

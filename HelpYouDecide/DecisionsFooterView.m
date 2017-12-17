@@ -22,6 +22,12 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    //Force rollButton to be as wide as the screen. Otherwise it gets cut on Plus models.
+    CGRect currentBounds = self.rollButton.bounds;
+    currentBounds.size.width = [[UIScreen mainScreen] bounds].size.width;
+    [self.rollButton setBounds:currentBounds];
+    
     CAShapeLayer *rollButtonLayer = [CAShapeLayer layer];
     rollButtonLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.rollButton.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:(CGSize){10.0, 10.0}].CGPath;
     self.rollButton.layer.mask = rollButtonLayer;
@@ -48,7 +54,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     CGPoint fixedLocation = CGPointMake(0.0, [[UIScreen mainScreen] bounds].size.height-self.bounds.size.height);
-    CGSize size = self.frame.size;
+    CGSize size = self.bounds.size;
     
     self.frame = CGRectMake(fixedLocation.x, fixedLocation.y, size.width, size.height);
 }

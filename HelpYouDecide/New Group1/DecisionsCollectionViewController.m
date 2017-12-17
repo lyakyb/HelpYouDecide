@@ -69,7 +69,7 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     for (DecisionsCollectionViewCell *cell in self.decisionCells) {
         if (!cell.hasInput) {
             allDecisionsEntered = NO;
-            return;
+            break;
         }
     }
     if (allDecisionsEntered) {

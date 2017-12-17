@@ -17,7 +17,6 @@
     
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
     [keyWindow insertSubview:destinationViewControllerView belowSubview:sourceViewControllerView];
-    
     destinationViewControllerView.transform = CGAffineTransformScale(destinationViewControllerView.transform, 0.001, 0.001);
     
     __weak typeof(self) weakSelf = self;

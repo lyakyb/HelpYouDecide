@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8E9B936C1FE4A6DE00409BBD /* SharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B936B1FE4A6DE00409BBD /* SharedConstants.m */; };
 		8E9B93811FE541E000409BBD /* HelpYouDecideLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B93801FE541E000409BBD /* HelpYouDecideLayout.m */; };
+		8E9B93841FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B93831FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m */; };
 		8EA6D6871FD6E55D00DF56FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6861FD6E55D00DF56FA /* AppDelegate.m */; };
 		8EA6D68D1FD6E55D00DF56FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA6D68B1FD6E55D00DF56FA /* Main.storyboard */; };
 		8EA6D68F1FD6E55D00DF56FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA6D68E1FD6E55D00DF56FA /* Assets.xcassets */; };
@@ -42,6 +43,8 @@
 		8E9B936B1FE4A6DE00409BBD /* SharedConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedConstants.m; sourceTree = "<group>"; };
 		8E9B937F1FE541E000409BBD /* HelpYouDecideLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpYouDecideLayout.h; sourceTree = "<group>"; };
 		8E9B93801FE541E000409BBD /* HelpYouDecideLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpYouDecideLayout.m; sourceTree = "<group>"; };
+		8E9B93821FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HesitationToDecisionsCustomSegue.h; sourceTree = "<group>"; };
+		8E9B93831FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HesitationToDecisionsCustomSegue.m; sourceTree = "<group>"; };
 		8EA6D6821FD6E55D00DF56FA /* HelpYouDecide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpYouDecide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA6D6851FD6E55D00DF56FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EA6D6861FD6E55D00DF56FA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				8EA6D6851FD6E55D00DF56FA /* AppDelegate.h */,
 				8EA6D6861FD6E55D00DF56FA /* AppDelegate.m */,
 				8EA6D68B1FD6E55D00DF56FA /* Main.storyboard */,
+				8E9B93821FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.h */,
+				8E9B93831FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m */,
 				8EF4FB2E1FDBA87800D39055 /* FinalDecisionView.h */,
 				8EF4FB2F1FDBA87800D39055 /* FinalDecisionView.m */,
 				8EF4FB1C1FD9137D00D39055 /* DecisionsCollectionViewCell.h */,
@@ -283,6 +288,7 @@
 				8E9B93811FE541E000409BBD /* HelpYouDecideLayout.m in Sources */,
 				8EA6D6B01FD6EE1800DF56FA /* HesitationView.m in Sources */,
 				8EF4FB181FD8EB3400D39055 /* DecisionsFooterView.m in Sources */,
+				8E9B93841FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m in Sources */,
 				8EA6D6BE1FD7D1DA00DF56FA /* HesitationCollectionViewController.m in Sources */,
 				8EF4FB1B1FD9133800D39055 /* DecisionsCollectionView.m in Sources */,
 				8EF4FB301FDBA87800D39055 /* FinalDecisionView.m in Sources */,

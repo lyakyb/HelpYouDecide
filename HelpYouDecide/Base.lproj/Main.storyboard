@@ -98,7 +98,7 @@
                         </connections>
                     </collectionView>
                     <connections>
-                        <segue destination="I1l-iq-sO5" kind="show" identifier="ShowDecisions" id="bjy-o4-iUC"/>
+                        <segue destination="I1l-iq-sO5" kind="custom" identifier="HesitationToDecisionsCustomSegue" customClass="HesitationToDecisionsCustomSegue" id="G0y-S5-PHk"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SD6-Xl-koM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -116,7 +116,7 @@
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nc4-Qs-HzE" customClass="HelpYouDecideLayout">
                             <size key="itemSize" width="375" height="75"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="50" height="100"/>
+                            <size key="footerReferenceSize" width="375" height="100"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>

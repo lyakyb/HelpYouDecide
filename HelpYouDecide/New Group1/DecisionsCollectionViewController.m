@@ -133,7 +133,7 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.view.bounds.size.width, 75.0f);
+    return CGSizeMake(self.collectionView.bounds.size.width, 75.0f);
 }
 
 #pragma mark <UIScrollViewDelegate>

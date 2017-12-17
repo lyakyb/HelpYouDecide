@@ -36,7 +36,7 @@
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewLayoutAttributes *layoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:elementKind withIndexPath:indexPath];
     
-    layoutAttributes.size = CGSizeMake([[UIScreen mainScreen] bounds].size.width, 65.f);
+    layoutAttributes.size = CGSizeMake([[UIScreen mainScreen] bounds].size.width, 100.f);
     
     if ([elementKind isEqualToString:UICollectionElementKindSectionFooter]) {
         [self updateFooterAttributes:layoutAttributes];
@@ -53,10 +53,14 @@
     CGRect currentBounds = self.collectionView.bounds;
     attributes.zIndex = 1024;
     attributes.hidden = NO;
+    CGFloat yCenterOffset = currentBounds.origin.y + currentBounds.size.height - attributes.size.height/2.0f + 20.f;
     
-//    CGFloat yCenterOffset = currentBounds.origin.y + currentBounds.size.height - attributes.size.height/2.0f;
+    NSLog(@"yCenterOffset: %f", yCenterOffset);
+    NSLog(@"currentBounds origin y : %f", currentBounds.origin.y);
+    NSLog(@"currentBounds height : %f", currentBounds.size.height);
+    NSLog(@"attributes size height: %f", attributes.size.height);
     
-    attributes.center = CGPointMake(CGRectGetMidX(currentBounds), [[UIScreen mainScreen] bounds].size.height - currentBounds.size.height);
+    attributes.center = CGPointMake(CGRectGetMidX(currentBounds), yCenterOffset);
     
 #ifdef DEBUG
     NSLog(@"Updated footer attributes");

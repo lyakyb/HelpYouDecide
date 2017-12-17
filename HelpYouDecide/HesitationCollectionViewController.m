@@ -30,7 +30,6 @@ static NSString * const reuseIdentifier = @"DecisionCell";
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-//    [self.collectionView registerNib:[UINib nibWithNibName:@"NumberOfDecisionsHeader" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"NumberOfDecisionsHeader"];
     
     switch ((NSInteger)[UIScreen mainScreen].bounds.size.width) {
         case kIphoneNonPlusWidth:
@@ -47,6 +46,12 @@ static NSString * const reuseIdentifier = @"DecisionCell";
         default:
             break;
     }
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
+    flowLayout.sectionHeadersPinToVisibleBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,11 +98,36 @@ static NSString * const reuseIdentifier = @"DecisionCell";
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [DefaultManager sharedInstance].numberOfDecisions = indexPath.item + 2;
-    [self performSegueWithIdentifier:@"HesitationToDecisionsCustomSegue" sender:self];
+    
+    if (indexPath.item == 5) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"How many options?" message:@"Type in the number of decisions you are considering" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"Number of Decisions";
+            textField.textColor = [UIColor colorWithRed:66.f/255.f green:179.f/255.f blue:244.f/255.f alpha:1.f];
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            textField.borderStyle = UITextBorderStyleRoundedRect;
+        }];
+        
+        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSArray *textFields = alertController.textFields;
+            UITextField * numberOfDecisionsField = textFields[0];
 #ifdef DEBUG
-    NSLog(@"Performing ShowDecisions Segue");
+            NSLog(@"# of decisions: %@", numberOfDecisionsField.text);
 #endif
+            [[DefaultManager sharedInstance] setNumberOfDecisions:[numberOfDecisionsField.text intValue]];
+            [self performSegueWithIdentifier:@"HesitationToDecisionsCustomSegue" sender:self];
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
+    } else {
+        [DefaultManager sharedInstance].numberOfDecisions = indexPath.item + 2;
+        [self performSegueWithIdentifier:@"HesitationToDecisionsCustomSegue" sender:self];
+#ifdef DEBUG
+        NSLog(@"Performing ShowDecisions Segue");
+#endif
+    }
+    
 }
 
 

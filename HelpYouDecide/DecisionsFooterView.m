@@ -11,6 +11,7 @@
 @interface DecisionsFooterView ()
 
 @property (nonatomic, weak) IBOutlet UIButton *rollButton;
+@property (nonatomic, assign) BOOL shouldFixFooter;
 
 @end
 
@@ -53,10 +54,19 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    CGPoint fixedLocation = CGPointMake(0.0, [[UIScreen mainScreen] bounds].size.height-self.bounds.size.height);
-    CGSize size = self.bounds.size;
     
-    self.frame = CGRectMake(fixedLocation.x, fixedLocation.y, size.width, size.height);
+    if (self.shouldFixFooter) {
+        CGPoint fixedLocation = CGPointMake(0.0, [[UIScreen mainScreen] bounds].size.height-self.bounds.size.height);
+        CGSize size = self.frame.size;
+        
+        self.frame = CGRectMake(fixedLocation.x, fixedLocation.y, size.width, size.height);
+        
+        self.shouldFixFooter = NO;
+    }
+}
+
+- (void)fixFooter {
+    self.shouldFixFooter = YES;
 }
 
 - (void)enableRollButton {

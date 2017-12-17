@@ -10,6 +10,7 @@
 
 @interface DecisionsFooterView : UICollectionReusableView
 
+- (void)fixFooter;
 - (void)disableRollButton;
 - (void)enableRollButton;
 

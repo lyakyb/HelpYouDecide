@@ -30,7 +30,9 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     [super viewDidLoad];
 
     self.decisionCells = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
-    
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionViewLayout;
+    flowLayout.sectionFootersPinToVisibleBounds = YES;
+
     [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsPageLoaded object:nil];
 }
 
@@ -91,7 +93,12 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     
     if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         DecisionsFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"DecisionsFooterView" forIndexPath:indexPath];
+        
         self.footerView = footerView;
+        
+        if ([[DefaultManager sharedInstance] numberOfDecisions] < 8) {
+            [self.footerView fixFooter];
+        }
         
         return footerView;
     }

@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSString *decision;
 
+- (void)updatePlaceHolderTextTo:(NSString *)text;
 - (BOOL)hasInput;
 - (void)displayKeyboard;
 - (void)hideKeyboard;

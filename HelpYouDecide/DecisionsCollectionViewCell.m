@@ -16,6 +16,10 @@
 
 @implementation DecisionsCollectionViewCell
 
+- (void)updatePlaceHolderTextTo:(NSString *)text {
+    self.textField.placeholder = text;
+}
+
 - (NSString *)decision {
     return self.textField.text;
 }

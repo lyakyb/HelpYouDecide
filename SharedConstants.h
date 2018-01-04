@@ -14,12 +14,12 @@ extern NSString * const HelpYouDecideLetsRoll;
 extern NSString * const HelpYouDecideDecisionsPageLoaded;
 
 //Dictionary Keys
-extern NSString * const HelpYouDecideNoPromptKey;
-extern NSString * const HelpYouDecideYesPromptKey;
 extern NSString * const HelpYouDecideWinningPromptKey;
-extern NSString * const HelpYouDecideDecisionPromptKey;
+extern NSString * const HelpYouDecideHesitationFirstPromptKey;
+extern NSString * const HelpYouDecideHesitationSecondPromptKey;
 extern NSString * const HelpYouDecideRetryPromptKey;
-extern NSString * const HelpYouDecideNoPromptKey;
+extern NSString * const HelpYouDecideInputPromptKey;
+extern NSString * const HelpYouDecideLetsRollPromptKey;
 
 
 @interface SharedConstants : NSObject

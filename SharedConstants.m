@@ -13,6 +13,13 @@ NSString * const HelpYouDecideDecisionsNotTyped = @"HelpYouDecideDecisionNotType
 NSString * const HelpYouDecideLetsRoll = @"HelpYouDecideLetsRoll";
 NSString * const HelpYouDecideDecisionsPageLoaded = @"HelpYouDecideDecisionsPageLoaded";
 
+NSString * const HelpYouDecideWinningPromptKey = @"HelpYouDecideWinningPromptKey";
+NSString * const HelpYouDecideHesitationFirstPromptKey = @"HelpYouDecideHesitationFirstPromptKey";
+NSString * const HelpYouDecideHesitationSecondPromptKey = @"HelpYouDecideHesitationSecondPromptKey";
+NSString * const HelpYouDecideRetryPromptKey = @"HelpYouDecideRetryPromptKey";
+NSString * const HelpYouDecideInputPromptKey = @"HelpYouDecideInputPromptKey";
+NSString * const HelpYouDecideLetsRollPromptKey = @"HelpYouDecideLetsRollPromptKey";
+
 
 @implementation SharedConstants
 

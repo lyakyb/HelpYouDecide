@@ -12,6 +12,7 @@
 #import "DefaultManager.h"
 #import "DecisionsCollectionViewCell.h"
 #import "SharedConstants.h"
+#import "LocalizationManager.h"
 
 @interface DecisionsCollectionViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -39,6 +40,8 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     
     //Holding reference to cells for later use
     [self.decisionCells addObject:cell];
+    
+    [cell updatePlaceHolderTextTo:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideInputPromptKey]];
     
     return cell;
 }
@@ -92,6 +95,8 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         DecisionsFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"DecisionsFooterView" forIndexPath:indexPath];
         self.footerView = footerView;
+        
+        [self.footerView updateButtonTextTo:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideLetsRollPromptKey]];
         
         return footerView;
     }

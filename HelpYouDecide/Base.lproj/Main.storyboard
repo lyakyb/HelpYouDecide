@@ -72,7 +72,7 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="NumberOfDecisionsHeader" id="UfT-bR-XP5">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="NumberOfDecisionsHeader" id="UfT-bR-XP5" customClass="HesitationCollectionViewHeaderView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
@@ -112,6 +112,10 @@
                                 <constraint firstAttribute="trailing" secondItem="DMX-Tl-Ggu" secondAttribute="trailing" id="tJX-dg-mtz"/>
                                 <constraint firstItem="eFf-9P-Og6" firstAttribute="top" secondItem="UfT-bR-XP5" secondAttribute="top" id="uvF-Sl-ccS"/>
                             </constraints>
+                            <connections>
+                                <outlet property="firstLabel" destination="eFf-9P-Og6" id="oxZ-7Q-kMl"/>
+                                <outlet property="secondLabel" destination="DMX-Tl-Ggu" id="4mO-2f-Sag"/>
+                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="U8t-Y6-Vaa" id="ND1-bM-6wS"/>

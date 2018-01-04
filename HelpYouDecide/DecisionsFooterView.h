@@ -12,5 +12,6 @@
 
 - (void)disableRollButton;
 - (void)enableRollButton;
+- (void)updateButtonTextTo:(NSString *)text;
 
 @end

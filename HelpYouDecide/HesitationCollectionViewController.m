@@ -10,6 +10,9 @@
 #import "HesitationCollectionViewCell.h"
 #import "DefaultManager.h"
 #import "FinalDecisionToHesitationCustomUnwindSegue.h"
+#import "HesitationCollectionViewHeaderView.h"
+#import "LocalizationManager.h"
+#import "SharedConstants.h"
 
 @interface HesitationCollectionViewController () <UICollectionViewDelegateFlowLayout>
 
@@ -87,7 +90,12 @@ static NSString * const reuseIdentifier = @"DecisionCell";
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *emptyView;
     if(indexPath.section == HesitationCollectionViewSectionHeader){
-        UICollectionReusableView *reusableView = (id)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"NumberOfDecisionsHeader" forIndexPath:indexPath];
+        HesitationCollectionViewHeaderView *reusableView = (id)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"NumberOfDecisionsHeader" forIndexPath:indexPath];
+        
+        [reusableView setFirstLabelTextToString:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideHesitationFirstPromptKey]];
+        [reusableView setSecondLabelTextToString:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideHesitationSecondPromptKey]];
+    
+        
         return reusableView;
     }
     return emptyView;

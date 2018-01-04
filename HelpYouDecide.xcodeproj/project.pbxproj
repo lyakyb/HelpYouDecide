@@ -11,13 +11,14 @@
 		8E9B93811FE541E000409BBD /* HelpYouDecideLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B93801FE541E000409BBD /* HelpYouDecideLayout.m */; };
 		8E9B93841FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B93831FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m */; };
 		8E9B93871FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B93861FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.m */; };
+		8E9B938A1FE667D700409BBD /* LocalizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B93891FE667D700409BBD /* LocalizationManager.m */; };
 		8EA6D6871FD6E55D00DF56FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6861FD6E55D00DF56FA /* AppDelegate.m */; };
 		8EA6D68D1FD6E55D00DF56FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA6D68B1FD6E55D00DF56FA /* Main.storyboard */; };
 		8EA6D68F1FD6E55D00DF56FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA6D68E1FD6E55D00DF56FA /* Assets.xcassets */; };
 		8EA6D6921FD6E55D00DF56FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA6D6901FD6E55D00DF56FA /* LaunchScreen.storyboard */; };
 		8EA6D6951FD6E55D00DF56FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6941FD6E55D00DF56FA /* main.m */; };
 		8EA6D69F1FD6E55E00DF56FA /* HelpYouDecideTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D69E1FD6E55E00DF56FA /* HelpYouDecideTests.m */; };
-		8EA6D6B01FD6EE1800DF56FA /* HesitationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6AF1FD6EE1800DF56FA /* HesitationView.m */; };
+		8EA6D6B01FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6AF1FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.m */; };
 		8EA6D6B51FD7CA1000DF56FA /* DecisionsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6B41FD7CA1000DF56FA /* DecisionsCollectionViewController.m */; };
 		8EA6D6B81FD7CA4300DF56FA /* FinalDecisionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6B71FD7CA4300DF56FA /* FinalDecisionViewController.m */; };
 		8EA6D6BE1FD7D1DA00DF56FA /* HesitationCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6BD1FD7D1DA00DF56FA /* HesitationCollectionViewController.m */; };
@@ -48,6 +49,8 @@
 		8E9B93831FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HesitationToDecisionsCustomSegue.m; sourceTree = "<group>"; };
 		8E9B93851FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinalDecisionToHesitationCustomUnwindSegue.h; sourceTree = "<group>"; };
 		8E9B93861FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalDecisionToHesitationCustomUnwindSegue.m; sourceTree = "<group>"; };
+		8E9B93881FE667D700409BBD /* LocalizationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalizationManager.h; sourceTree = "<group>"; };
+		8E9B93891FE667D700409BBD /* LocalizationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalizationManager.m; sourceTree = "<group>"; };
 		8EA6D6821FD6E55D00DF56FA /* HelpYouDecide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpYouDecide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA6D6851FD6E55D00DF56FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8EA6D6861FD6E55D00DF56FA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -59,8 +62,8 @@
 		8EA6D69A1FD6E55E00DF56FA /* HelpYouDecideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelpYouDecideTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA6D69E1FD6E55E00DF56FA /* HelpYouDecideTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpYouDecideTests.m; sourceTree = "<group>"; };
 		8EA6D6A01FD6E55E00DF56FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EA6D6AE1FD6EE1800DF56FA /* HesitationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HesitationView.h; sourceTree = "<group>"; };
-		8EA6D6AF1FD6EE1800DF56FA /* HesitationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HesitationView.m; sourceTree = "<group>"; };
+		8EA6D6AE1FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HesitationCollectionViewHeaderView.h; sourceTree = "<group>"; };
+		8EA6D6AF1FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HesitationCollectionViewHeaderView.m; sourceTree = "<group>"; };
 		8EA6D6B31FD7CA1000DF56FA /* DecisionsCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecisionsCollectionViewController.h; sourceTree = "<group>"; };
 		8EA6D6B41FD7CA1000DF56FA /* DecisionsCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecisionsCollectionViewController.m; sourceTree = "<group>"; };
 		8EA6D6B61FD7CA4300DF56FA /* FinalDecisionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinalDecisionViewController.h; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 		8EA6D6791FD6E55D00DF56FA = {
 			isa = PBXGroup;
 			children = (
+				8E9B93881FE667D700409BBD /* LocalizationManager.h */,
+				8E9B93891FE667D700409BBD /* LocalizationManager.m */,
 				8E9B93851FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.h */,
 				8E9B93861FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.m */,
 				8E9B937F1FE541E000409BBD /* HelpYouDecideLayout.h */,
@@ -167,8 +172,8 @@
 		8EA6D6B11FD6EE2200DF56FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8EA6D6AE1FD6EE1800DF56FA /* HesitationView.h */,
-				8EA6D6AF1FD6EE1800DF56FA /* HesitationView.m */,
+				8EA6D6AE1FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.h */,
+				8EA6D6AF1FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.m */,
 			);
 			name = Views;
 			path = "New Group";
@@ -292,10 +297,11 @@
 				8EA6D6B51FD7CA1000DF56FA /* DecisionsCollectionViewController.m in Sources */,
 				8E9B93811FE541E000409BBD /* HelpYouDecideLayout.m in Sources */,
 				8E9B93871FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.m in Sources */,
-				8EA6D6B01FD6EE1800DF56FA /* HesitationView.m in Sources */,
+				8EA6D6B01FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.m in Sources */,
 				8EF4FB181FD8EB3400D39055 /* DecisionsFooterView.m in Sources */,
 				8E9B93841FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m in Sources */,
 				8EA6D6BE1FD7D1DA00DF56FA /* HesitationCollectionViewController.m in Sources */,
+				8E9B938A1FE667D700409BBD /* LocalizationManager.m in Sources */,
 				8EF4FB1B1FD9133800D39055 /* DecisionsCollectionView.m in Sources */,
 				8EF4FB301FDBA87800D39055 /* FinalDecisionView.m in Sources */,
 				8E9B936C1FE4A6DE00409BBD /* SharedConstants.m in Sources */,

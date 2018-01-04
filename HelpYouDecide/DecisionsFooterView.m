@@ -74,4 +74,9 @@
     });
 }
 
+- (void)updateButtonTextTo:(NSString *)text {
+    NSAttributedString *string = [[NSAttributedString alloc] initWithString:text];
+    [self.rollButton setAttributedTitle:string forState:UIControlStateNormal];
+}
+
 @end

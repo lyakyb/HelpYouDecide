@@ -25,5 +25,7 @@
 - (void)showFinalDecision;
 - (void)showRetrySuggestion;
 - (void)hideRetrySuggestion;
+- (void)setWinningDecisionTextTo:(NSString *)text;
+- (void)setRetryButtonTextTo:(NSString *)text;
 
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HesitationView : UIView
+@interface HesitationCollectionViewHeaderView : UICollectionReusableView
+
+- (void)setFirstLabelTextToString:(NSString *)text;
+- (void)setSecondLabelTextToString:(NSString *)text;
 
 @end

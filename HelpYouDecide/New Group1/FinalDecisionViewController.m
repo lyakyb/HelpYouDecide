@@ -8,6 +8,8 @@
 
 #import "FinalDecisionViewController.h"
 #import "DefaultManager.h"
+#import "LocalizationManager.h"
+#import "SharedConstants.h"
 
 @interface FinalDecisionViewController () <FinalDecisionViewDelegate>
 
@@ -28,6 +30,8 @@
     [self.view.window makeKeyWindow];
     [self.view.window makeKeyAndVisible];
     
+    [self.view setWinningDecisionTextTo:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideWinningPromptKey]];
+    [self.view setRetryButtonTextTo:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideRetryPromptKey]];
 }
 
 - (void)dealloc {
@@ -75,6 +79,7 @@
 - (IBAction)showHesitationCollectionViewController:(id)sender {
     [self performSegueWithIdentifier:@"unwind" sender:self];
 }
+
 
 /*
 #pragma mark - Navigation

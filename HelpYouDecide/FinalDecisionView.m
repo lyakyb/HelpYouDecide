@@ -116,6 +116,15 @@ const CGFloat kRetryButtonHeight = 100.f;
 }
 
 
+- (void)setWinningDecisionTextTo:(NSString *)text {
+    self.winningDecisionLabel.text = text;
+}
+
+- (void)setRetryButtonTextTo:(NSString *)text {
+    NSAttributedString *string = [[NSAttributedString alloc] initWithString:text];
+    [self.retryButton setAttributedTitle:string forState:UIControlStateNormal];
+}
+
 
 
 /*

@@ -82,6 +82,7 @@ const CGFloat kRetryButtonHeight = 100.f;
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:4.f animations:^{
             [weakSelf.winningDecisionLabel setAlpha:1.f];
+            [weakSelf.delegate viewAppeared];
         }];
     });
 }
@@ -100,7 +101,6 @@ const CGFloat kRetryButtonHeight = 100.f;
                 } completion:^(BOOL finished) {
                     if (finished) {
                         weakSelf.finalDecisionLabel.textColor = [UIColor blueColor];
-                        [weakSelf.delegate decisionAppeared];
                     }
                 }];
             }
@@ -124,7 +124,6 @@ const CGFloat kRetryButtonHeight = 100.f;
     NSAttributedString *string = [[NSAttributedString alloc] initWithString:text];
     [self.retryButton setAttributedTitle:string forState:UIControlStateNormal];
 }
-
 
 
 /*

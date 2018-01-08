@@ -29,6 +29,10 @@
     return sharedInstance;
 }
 
+- (NSUInteger)finalDecisionIndex {
+    return [self.decisions indexOfObject:self.finalDecision];
+}
+
 - (void)storeDecisionsAndRollFromArray:(NSArray *)decisions {
     if (self.hasRolled) {
         return;

@@ -23,6 +23,8 @@
 		8EA6D6B81FD7CA4300DF56FA /* FinalDecisionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6B71FD7CA4300DF56FA /* FinalDecisionViewController.m */; };
 		8EA6D6BE1FD7D1DA00DF56FA /* HesitationCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6BD1FD7D1DA00DF56FA /* HesitationCollectionViewController.m */; };
 		8EA6D6C11FD7DE2600DF56FA /* HesitationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6C01FD7DE2600DF56FA /* HesitationCollectionViewCell.m */; };
+		8ED9EAB02000D51100B3E759 /* FinalDecisionCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9EAAF2000D51100B3E759 /* FinalDecisionCollectionView.m */; };
+		8ED9EAB62000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9EAB52000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m */; };
 		8EF4FB181FD8EB3400D39055 /* DecisionsFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB171FD8EB3400D39055 /* DecisionsFooterView.m */; };
 		8EF4FB1B1FD9133800D39055 /* DecisionsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB1A1FD9133800D39055 /* DecisionsCollectionView.m */; };
 		8EF4FB1E1FD9137D00D39055 /* DecisionsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB1D1FD9137D00D39055 /* DecisionsCollectionViewCell.m */; };
@@ -72,6 +74,10 @@
 		8EA6D6BD1FD7D1DA00DF56FA /* HesitationCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HesitationCollectionViewController.m; sourceTree = "<group>"; };
 		8EA6D6BF1FD7DE2600DF56FA /* HesitationCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HesitationCollectionViewCell.h; sourceTree = "<group>"; };
 		8EA6D6C01FD7DE2600DF56FA /* HesitationCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HesitationCollectionViewCell.m; sourceTree = "<group>"; };
+		8ED9EAAE2000D51100B3E759 /* FinalDecisionCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinalDecisionCollectionView.h; sourceTree = "<group>"; };
+		8ED9EAAF2000D51100B3E759 /* FinalDecisionCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalDecisionCollectionView.m; sourceTree = "<group>"; };
+		8ED9EAB42000DCCB00B3E759 /* FinalDecisionCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinalDecisionCollectionViewCell.h; sourceTree = "<group>"; };
+		8ED9EAB52000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalDecisionCollectionViewCell.m; sourceTree = "<group>"; };
 		8EF4FB161FD8EB3400D39055 /* DecisionsFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecisionsFooterView.h; sourceTree = "<group>"; };
 		8EF4FB171FD8EB3400D39055 /* DecisionsFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecisionsFooterView.m; sourceTree = "<group>"; };
 		8EF4FB191FD9133800D39055 /* DecisionsCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecisionsCollectionView.h; sourceTree = "<group>"; };
@@ -105,6 +111,10 @@
 		8EA6D6791FD6E55D00DF56FA = {
 			isa = PBXGroup;
 			children = (
+				8ED9EAB42000DCCB00B3E759 /* FinalDecisionCollectionViewCell.h */,
+				8ED9EAB52000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m */,
+				8ED9EAAE2000D51100B3E759 /* FinalDecisionCollectionView.h */,
+				8ED9EAAF2000D51100B3E759 /* FinalDecisionCollectionView.m */,
 				8E9B93881FE667D700409BBD /* LocalizationManager.h */,
 				8E9B93891FE667D700409BBD /* LocalizationManager.m */,
 				8E9B93851FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.h */,
@@ -298,6 +308,7 @@
 				8E9B93811FE541E000409BBD /* HelpYouDecideLayout.m in Sources */,
 				8E9B93871FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.m in Sources */,
 				8EA6D6B01FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.m in Sources */,
+				8ED9EAB62000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m in Sources */,
 				8EF4FB181FD8EB3400D39055 /* DecisionsFooterView.m in Sources */,
 				8E9B93841FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m in Sources */,
 				8EA6D6BE1FD7D1DA00DF56FA /* HesitationCollectionViewController.m in Sources */,
@@ -310,6 +321,7 @@
 				8EF4FB1E1FD9137D00D39055 /* DecisionsCollectionViewCell.m in Sources */,
 				8EA6D6871FD6E55D00DF56FA /* AppDelegate.m in Sources */,
 				8EF4FB211FD937FE00D39055 /* DefaultManager.m in Sources */,
+				8ED9EAB02000D51100B3E759 /* FinalDecisionCollectionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

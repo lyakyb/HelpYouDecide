@@ -29,7 +29,7 @@ static NSDictionary * LocalizationManagerEnglishDictionary;
         sharedInstance.preferredLanguage = LocalizationManagerLanguageSettingKorean;
         
         LocalizationManagerKoreanDicionary = @{HelpYouDecideInputPromptKey:@"옵션을 적어줘!",
-                                               HelpYouDecideWinningPromptKey:@"네 본심은...",
+                                               HelpYouDecideWinningPromptKey:@"운명의 선택은...",
                                                HelpYouDecideRetryPromptKey:@"결정장애가 또....",
                                                HelpYouDecideHesitationFirstPromptKey:@"몇가지 결정이",
                                                HelpYouDecideHesitationSecondPromptKey:@"당신을 괴롭히나요?",

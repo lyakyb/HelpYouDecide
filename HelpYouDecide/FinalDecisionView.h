@@ -12,7 +12,7 @@
 
 - (void)noButtonPressed;
 - (void)retryButtonPressed;
-- (void)decisionAppeared;
+- (void)viewAppeared;
 
 @end
 
@@ -22,6 +22,7 @@
 @property (nonatomic, weak) id<FinalDecisionViewDelegate> delegate;
 
 - (void)showWinningDecisionLabel;
+//deprecated
 - (void)showFinalDecision;
 - (void)showRetrySuggestion;
 - (void)hideRetrySuggestion;

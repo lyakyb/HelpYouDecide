@@ -14,6 +14,7 @@
 @property (nonatomic, assign) NSInteger numberOfDecisions;
 @property (nonatomic, readonly) NSArray *decisions;
 @property (nonatomic, readonly) NSString *finalDecision;
+@property (nonatomic, readonly) NSUInteger finalDecisionIndex;
 
 + (instancetype)sharedInstance;
 - (void)storeDecisionsAndRollFromArray:(NSArray *)decisions;

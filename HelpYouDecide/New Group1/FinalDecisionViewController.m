@@ -10,11 +10,16 @@
 #import "DefaultManager.h"
 #import "LocalizationManager.h"
 #import "SharedConstants.h"
+#import "FinalDecisionCollectionView.h"
+#import "FinalDecisionCollectionViewCell.h"
 
-@interface FinalDecisionViewController () <FinalDecisionViewDelegate>
+@interface FinalDecisionViewController () <FinalDecisionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSTimer *retryTimer;
+@property (nonatomic, strong) NSTimer *highlightTimer;
+@property (nonatomic, weak) IBOutlet FinalDecisionCollectionView *collectionView;
+@property (nonatomic, assign) NSUInteger randomNumber;
 
 @end
 
@@ -44,12 +49,42 @@
     [self.view showWinningDecisionLabel];
     __weak typeof(self) weakSelf = self;
     self.timer = [NSTimer timerWithTimeInterval:4.f repeats:NO block:^(NSTimer * _Nonnull timer) {
-        [weakSelf.view showFinalDecision];
+        [weakSelf highlightFinalDecision];
+        [[weakSelf highlightTimer] invalidate];
 #ifdef DEBUG
         NSLog(@"show final decision");
 #endif
     }];
     [[NSRunLoop mainRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    
+    self.highlightTimer = [NSTimer timerWithTimeInterval:0.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
+        [weakSelf highlightCells];
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:self.highlightTimer forMode:NSRunLoopCommonModes];
+    
+    [self.collectionView reloadData];
+}
+
+- (void)highlightFinalDecision {
+    [self.collectionView.visibleCells enumerateObjectsUsingBlock:^(__kindof UICollectionViewCell * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj setBackgroundColor:[UIColor whiteColor]];
+    }];
+    
+    
+    [(FinalDecisionCollectionViewCell *)[self.collectionView.visibleCells objectAtIndex:[[DefaultManager sharedInstance] finalDecisionIndex]] highlight];
+    
+    [self decisionAppeared];
+}
+
+- (void)highlightCells {
+    int prevNum = self.randomNumber;
+    self.randomNumber = arc4random_uniform([[DefaultManager sharedInstance] numberOfDecisions]);
+    
+    if (self.randomNumber != prevNum) {
+        [(FinalDecisionCollectionViewCell *)[self.collectionView.visibleCells objectAtIndex:prevNum] unhighlight];
+    }
+    
+    [(FinalDecisionCollectionViewCell *)[self.collectionView.visibleCells objectAtIndex:self.randomNumber] highlight];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -80,6 +115,12 @@
     [self performSegueWithIdentifier:@"unwind" sender:self];
 }
 
+- (void)viewAppeared {
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.collectionView appear];
+    });
+}
 
 /*
 #pragma mark - Navigation
@@ -90,5 +131,23 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UICollectionViewDelegate
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [[DefaultManager sharedInstance] numberOfDecisions];
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    FinalDecisionCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FianlDecisionCollectionViewCell" forIndexPath:indexPath];
+    
+    cell.decision = [[[DefaultManager sharedInstance] decisions] objectAtIndex:indexPath.item];
+    
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height / [[DefaultManager sharedInstance] numberOfDecisions]);
+}
 
 @end

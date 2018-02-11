@@ -13,6 +13,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *winningDecisionLabel;
 @property (nonatomic, weak) IBOutlet UILabel *finalDecisionLabel;
 @property (nonatomic, weak) IBOutlet UIButton *retryButton;
+@property (nonatomic, weak) IBOutlet UIView *lineView;
 
 @end
 
@@ -29,6 +30,7 @@ const CGFloat kRetryButtonHeight = 100.f;
 
     [self.finalDecisionLabel setFont:[UIFont fontWithName:@"Chalkboard SE" size:40.f]];
     [self.winningDecisionLabel setAlpha:0.f];
+    [self.lineView setAlpha:0.f];
     [self.finalDecisionLabel setAlpha:0.f];
     [self resetRetrySuggestion];
     [self roundAppropriateCorners];
@@ -82,6 +84,7 @@ const CGFloat kRetryButtonHeight = 100.f;
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:4.f animations:^{
             [weakSelf.winningDecisionLabel setAlpha:1.f];
+            [weakSelf.lineView setAlpha:1.f];
             [weakSelf.delegate viewAppeared];
         }];
     });

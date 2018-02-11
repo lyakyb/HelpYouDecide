@@ -235,6 +235,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWe-fC-CZl" userLabel="Line">
+                                <rect key="frame" x="56" y="85" width="262.5" height="1"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="TfF-Yu-bMN"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYW-od-Cp5">
                                 <rect key="frame" x="-0.5" y="184" width="375" height="300"/>
                                 <constraints>
@@ -302,6 +309,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QWe-fC-CZl" firstAttribute="centerX" secondItem="JDf-sv-bDL" secondAttribute="centerX" id="2QV-gc-ZBt"/>
                             <constraint firstItem="KJJ-1T-fye" firstAttribute="centerX" secondItem="JDf-sv-bDL" secondAttribute="centerX" id="BcR-N6-uZ5"/>
                             <constraint firstItem="JDf-sv-bDL" firstAttribute="top" secondItem="Abi-p6-PoK" secondAttribute="top" constant="10" id="GSw-Li-9Sg"/>
                             <constraint firstItem="Abi-p6-PoK" firstAttribute="bottom" secondItem="KJJ-1T-fye" secondAttribute="bottom" constant="100" id="LJx-iO-nAO"/>
@@ -310,15 +318,18 @@
                             <constraint firstItem="JDf-sv-bDL" firstAttribute="centerX" secondItem="Abi-p6-PoK" secondAttribute="centerX" id="Pyw-rs-OTM"/>
                             <constraint firstItem="yYW-od-Cp5" firstAttribute="width" secondItem="lOK-ed-aE5" secondAttribute="width" id="UYh-HN-x4X"/>
                             <constraint firstItem="yYW-od-Cp5" firstAttribute="centerX" secondItem="JDf-sv-bDL" secondAttribute="centerX" id="UfM-2i-N2s"/>
+                            <constraint firstItem="QWe-fC-CZl" firstAttribute="width" secondItem="lOK-ed-aE5" secondAttribute="width" multiplier="0.7" id="Uki-O3-ivS"/>
                             <constraint firstItem="yYW-od-Cp5" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="bottom" priority="750" constant="100" id="bDL-Hq-94n"/>
                             <constraint firstItem="JDf-sv-bDL" firstAttribute="width" secondItem="lOK-ed-aE5" secondAttribute="width" id="ioA-xg-LPM"/>
                             <constraint firstItem="KJJ-1T-fye" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="top" constant="70" id="l42-84-WnZ"/>
                             <constraint firstItem="Abi-p6-PoK" firstAttribute="bottom" secondItem="6Ua-NW-Iaf" secondAttribute="bottom" constant="-100" id="nPq-cv-xeg"/>
+                            <constraint firstItem="QWe-fC-CZl" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="bottom" constant="1" id="tfk-Dl-sXT"/>
                             <constraint firstItem="6Ua-NW-Iaf" firstAttribute="leading" secondItem="Abi-p6-PoK" secondAttribute="leading" id="wC1-9h-seb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Abi-p6-PoK"/>
                         <connections>
                             <outlet property="finalDecisionLabel" destination="yYW-od-Cp5" id="xLJ-T5-y6g"/>
+                            <outlet property="lineView" destination="QWe-fC-CZl" id="uw5-8q-nWE"/>
                             <outlet property="retryButton" destination="6Ua-NW-Iaf" id="b5j-Cz-Sta"/>
                             <outlet property="winningDecisionLabel" destination="JDf-sv-bDL" id="ATj-UY-qOe"/>
                         </connections>

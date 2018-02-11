@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *decision;
 
 - (void)highlight;
+- (void)finalHighlight;
 - (void)unhighlight;
 
 @end

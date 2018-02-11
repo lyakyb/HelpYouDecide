@@ -71,7 +71,7 @@
     }];
     
     
-    [(FinalDecisionCollectionViewCell *)[self.collectionView.visibleCells objectAtIndex:[[DefaultManager sharedInstance] finalDecisionIndex]] highlight];
+    [(FinalDecisionCollectionViewCell *)[self.collectionView.visibleCells objectAtIndex:[[DefaultManager sharedInstance] finalDecisionIndex]] finalHighlight];
     
     [self decisionAppeared];
 }

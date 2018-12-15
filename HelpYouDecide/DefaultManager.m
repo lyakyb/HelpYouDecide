@@ -72,6 +72,7 @@
     self.finalDecision = nil;
     self.decisions = nil;
     self.numberOfDecisions = 0;
+    self.hasRolled = NO;
 }
 
 @end

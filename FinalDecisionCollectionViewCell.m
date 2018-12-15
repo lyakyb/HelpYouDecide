@@ -16,6 +16,22 @@
 
 @implementation FinalDecisionCollectionViewCell
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self updateBorder];
+}
+
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.decisionLabel.text = @"";
+    [self updateBorder];
+}
+
+- (void)updateBorder {
+    self.layer.borderWidth = 0.3f;
+    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+}
+
 - (void)setDecision:(NSString *)decision {
     self.decisionLabel.text = decision;
 }

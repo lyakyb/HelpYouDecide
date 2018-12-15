@@ -29,9 +29,9 @@
 
 - (void)setNumberOfDecisions:(NSInteger)numberOfDecisions {
     if (numberOfDecisions == 99) {
-        self.label.text = @"6+";
+        self.label.text = @"+";
     } else {
-        self.label.text = [NSString stringWithFormat:@"%ld", numberOfDecisions +2];        
+        self.label.text = [NSString stringWithFormat:@"%ld", numberOfDecisions +2];
     }
 }
 

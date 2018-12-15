@@ -16,6 +16,11 @@
 
 @implementation DecisionsCollectionViewCell
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.textField.delegate = self;
+}
+
 - (void)updatePlaceHolderTextTo:(NSString *)text {
     self.textField.placeholder = text;
 }
@@ -37,6 +42,14 @@
     NSLog(@"text : %@", self.textField.text);
 #endif
     return self.textField.text.length > 0;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.delegate textFieldUpdatingFromValue:textField.text];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.delegate textFieldUpdatedToValue:textField.text];
 }
 
 @end

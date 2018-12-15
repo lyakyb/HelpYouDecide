@@ -11,6 +11,7 @@
 @interface DecisionsFooterView ()
 
 @property (nonatomic, weak) IBOutlet UIButton *rollButton;
+@property (nonatomic, assign) BOOL isEnabled;
 
 @end
 
@@ -35,10 +36,13 @@
     [self.rollButton setTitleColor:[self disabledTextColor] forState:UIControlStateNormal];
     self.rollButton.tintColor = [self disabledTextColor];
     
+    self.isEnabled = YES;
     [self disableRollButton];    
 }
 
 - (void)disableRollButton {
+    if (!self.isEnabled) return;
+    
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:1.f animations:^{
@@ -47,6 +51,7 @@
                                       forState:UIControlStateNormal];            
         } completion:^(BOOL finished) {
             [weakSelf.rollButton setUserInteractionEnabled:NO];
+            weakSelf.isEnabled = NO;
         }];
     });
 }
@@ -60,6 +65,8 @@
 }
 
 - (void)enableRollButton {
+    if (self.isEnabled) return;
+    
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
         [UIView animateWithDuration:1.f animations:^{
@@ -67,6 +74,7 @@
             [weakSelf.rollButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         } completion:^(BOOL finished) {
             [weakSelf.rollButton setUserInteractionEnabled:YES];
+            weakSelf.isEnabled = YES;
 #ifdef DEBUG
             NSLog(@"user interaction enabled to YES");
 #endif

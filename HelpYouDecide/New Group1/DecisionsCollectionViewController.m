@@ -14,12 +14,14 @@
 #import "SharedConstants.h"
 #import "LocalizationManager.h"
 
-@interface DecisionsCollectionViewController () <UITextFieldDelegate, UICollectionViewDelegateFlowLayout>
+@interface DecisionsCollectionViewController () <UICollectionViewDelegateFlowLayout, DecisionsCollectionViewCellDelegate>
 
-@property (nonatomic, strong) NSMutableArray *decisionCells;
 @property (nonatomic, strong) NSMutableDictionary *decisions;
+@property (nonatomic, strong) NSMutableArray *decisionArray;
 @property (nonatomic, strong) DecisionsFooterView *footerView;
 @property (nonatomic, assign) BOOL footerNeedsUpdate;
+@property (nonatomic, assign) NSInteger decisionCounter;
+@property (nonatomic, strong) NSString *editingDecision;
 
 @end
 
@@ -30,19 +32,20 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.decisionCells = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
+    self.decisionCounter = 0;
+    
+    self.decisionArray = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsPageLoaded object:nil];
     
     [(UICollectionViewFlowLayout*)self.collectionViewLayout setSectionFootersPinToVisibleBounds:YES];
 }
 
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DecisionsCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    //Holding reference to cells for later use
-    [self.decisionCells addObject:cell];
-    
+    cell.delegate = self;
     [cell updatePlaceHolderTextTo:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideInputPromptKey]];
     
     return cell;
@@ -50,44 +53,21 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    self.decisionCells = nil;
+    
     self.decisions = nil;
 }
 
 - (IBAction)saveAllDecisionsAndRoll:(id)sender {
-    NSMutableArray *decisions = [NSMutableArray arrayWithCapacity:self.decisionCells.count];
-    
-    for (DecisionsCollectionViewCell *cell in self.decisionCells) {
-        [decisions addObject:cell.decision];
+    if (self.editingDecision != nil) {
+        [self.decisionArray addObject:self.editingDecision];
     }
     
-    [[DefaultManager sharedInstance] storeDecisionsAndRollFromArray:decisions];
+    [[DefaultManager sharedInstance] storeDecisionsAndRollFromArray:[self.decisionArray copy]];
     
     [self performSegueWithIdentifier:@"LetsRollSegue" sender:nil];
 #ifdef DEBUG
     NSLog(@"LetsRollSegue Performed");
 #endif
-}
-
-- (void)decisionUpdatedFromCell {
-    BOOL allDecisionsEntered = YES;
-    for (DecisionsCollectionViewCell *cell in self.decisionCells) {
-        if (!cell.hasInput) {
-            allDecisionsEntered = NO;
-            break;
-        }
-    }
-    if (allDecisionsEntered) {
-        NSLog(@"enabling roll button");
-#ifdef DEBUG
-        [self.footerView enableRollButton];
-#endif
-    } else {
-#ifdef DEBUG
-        NSLog(@"disabling roll button");
-#endif
-        [self.footerView disableRollButton];
-    }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -104,23 +84,6 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     }
     
     return emptyView;
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    [self decisionUpdatedFromCell];
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-#ifdef DEBUG
-    NSLog(@"Text field begun editing");
-#endif
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField endEditing:YES];
-    return YES;
 }
 
 #pragma mark <UICollectionViewDataSource>
@@ -155,5 +118,30 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 //    UICollectionReusableView *decisionsFooterView = (id)[self.collectionView supplementaryViewForElementKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForItem:0 inSection:DecisionsCollectionViewSectionFooter]];
 //
 //}
+
+#pragma mark <DecisionsCollectionViewCellDelegate>
+- (void)textFieldUpdatingFromValue:(NSString *)text {
+    if ([self.decisionArray containsObject:text]) {
+        self.editingDecision = text;
+        [self.decisionArray removeObject:text];
+    }
+}
+
+- (void)textFieldUpdatedToValue:(NSString *)text {
+    if (text == nil || text.length == 0) {
+        self.decisionCounter--;
+        [self.footerView disableRollButton];
+        return;
+    }
+    
+    [self.decisionArray addObject:text];
+    self.editingDecision = nil;
+    
+    if (self.decisionCounter == [[DefaultManager sharedInstance] numberOfDecisions] - 1) {
+        [self.footerView enableRollButton];
+    } else {
+        self.decisionCounter++;
+    }
+}
 
 @end

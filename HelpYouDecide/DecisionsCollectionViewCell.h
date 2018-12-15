@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DecisionsCollectionViewCellDelegate
+
+- (void)textFieldUpdatedToValue:(NSString*)text;
+- (void)textFieldUpdatingFromValue:(NSString*)text;
+
+@end
+
 @interface DecisionsCollectionViewCell : UICollectionViewCell
 
+@property (nonatomic, weak) id<DecisionsCollectionViewCellDelegate> delegate;
 @property (nonatomic, strong) NSString *decision;
 
 - (void)updatePlaceHolderTextTo:(NSString *)text;
@@ -18,3 +26,4 @@
 - (void)hideKeyboard;
 
 @end
+

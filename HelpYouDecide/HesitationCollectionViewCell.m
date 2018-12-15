@@ -28,7 +28,11 @@
 }
 
 - (void)setNumberOfDecisions:(NSInteger)numberOfDecisions {
-    self.label.text = [NSString stringWithFormat:@"%ld", numberOfDecisions +2];
+    if (numberOfDecisions == 99) {
+        self.label.text = @"6+";
+    } else {
+        self.label.text = [NSString stringWithFormat:@"%ld", numberOfDecisions +2];        
+    }
 }
 
 - (void)hideLine {

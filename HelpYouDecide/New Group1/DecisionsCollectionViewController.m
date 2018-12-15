@@ -33,6 +33,8 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     self.decisionCells = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsPageLoaded object:nil];
+    
+    [(UICollectionViewFlowLayout*)self.collectionViewLayout setSectionFootersPinToVisibleBounds:YES];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

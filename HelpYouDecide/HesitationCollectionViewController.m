@@ -81,6 +81,7 @@ static NSString * const reuseIdentifier = @"DecisionCell";
     cell.numberOfDecisions = !indexPath.item ? 0 : indexPath.item;
 
     if (indexPath.item + 1 == NUMBER_OF_ITEMS) {
+        cell.numberOfDecisions = 99;
         [cell hideLine];
     }
     
@@ -105,8 +106,44 @@ static NSString * const reuseIdentifier = @"DecisionCell";
 #pragma mark <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [DefaultManager sharedInstance].numberOfDecisions = indexPath.item + 2;
-    [self performSegueWithIdentifier:@"HesitationToDecisionsCustomSegue" sender:self];
+    if (indexPath.item + 1 == NUMBER_OF_ITEMS) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"HelpYouDecide" message:@"How many decisions you got?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+            textField.placeholder = @"6";
+            textField.textColor = [UIColor blackColor];
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            textField.borderStyle = UITextBorderStyleRoundedRect;
+        }];
+        
+        __weak typeof(self) weakSelf = self;
+        __block UIAlertController *weakAlertController = alertController;
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Let's go" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            if (weakAlertController.textFields[0].text.integerValue < NUMBER_OF_ITEMS + 1) {
+                UIAlertController *alertController2 = [UIAlertController alertControllerWithTitle:@"Error!" message:@"You either typed non-number value or a number less than 6! Please try again!" preferredStyle:UIAlertControllerStyleAlert];
+                [alertController2 addAction:[UIAlertAction actionWithTitle:@"Got it!" style:UIAlertActionStyleCancel handler:nil]];
+                [weakSelf presentViewController:alertController2 animated:YES completion:nil];
+            }else{
+                [DefaultManager sharedInstance].numberOfDecisions = [weakAlertController.textFields[0].text integerValue];
+                
+                [weakSelf performSegueWithIdentifier:@"HesitationToDecisionsCustomSegue" sender:weakSelf];
+            }
+            
+            
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+#ifdef DEBUG
+            NSLog(@"User cacncelled");
+#endif
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    } else {
+        [DefaultManager sharedInstance].numberOfDecisions = indexPath.item + 2;
+        [self performSegueWithIdentifier:@"HesitationToDecisionsCustomSegue" sender:self];
+    }
 #ifdef DEBUG
     NSLog(@"Performing ShowDecisions Segue");
 #endif

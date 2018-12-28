@@ -24,8 +24,19 @@ static NSDictionary * LocalizationManagerEnglishDictionary;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [self new];
-        sharedInstance.preferredLanguage = LocalizationManagerLanguageSettingKorean;
         
+        
+        
+        NSLocale *locale = [NSLocale autoupdatingCurrentLocale];
+        NSString *language = [locale localizedStringForLanguageCode:locale.languageCode];
+        
+        if ([language isEqualToString:@"Korean"]) {
+            sharedInstance.preferredLanguage = LocalizationManagerLanguageSettingKorean;
+        } else {
+            //Default to English
+            sharedInstance.preferredLanguage = LocalizationManagerLanguageSettingEnglish;
+        }
+                
         LocalizationManagerKoreanDicionary = @{HelpYouDecideInputPromptKey:@"옵션을 적어줘!",
                                                HelpYouDecideWinningPromptKey:@"운명의 선택은...",
                                                HelpYouDecideRetryPromptKey:@"결정장애가 또....",

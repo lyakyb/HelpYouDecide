@@ -38,7 +38,7 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     
     [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsPageLoaded object:nil];
     
-    [(UICollectionViewFlowLayout*)self.collectionViewLayout setSectionFootersPinToVisibleBounds:YES];
+//    [(UICollectionViewFlowLayout*)self.collectionViewLayout setSectionFootersPinToVisibleBounds:YES];
 }
 
 

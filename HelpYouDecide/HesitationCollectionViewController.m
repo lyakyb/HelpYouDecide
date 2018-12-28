@@ -57,6 +57,34 @@ static NSString * const reuseIdentifier = @"DecisionCell";
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)becomeFirstResponder {
+    return YES;
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+#ifdef DEBUG
+        NSLog(@"shake detected");
+#endif
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"HelpYouDecide" message:@"Which language do you prefer?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        __weak typeof(self) weakSelf = self;
+        [alertController addAction:[UIAlertAction actionWithTitle:@"English" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[LocalizationManager sharedInstance] setPreferredLanguage:LocalizationManagerLanguageSettingEnglish];
+            [weakSelf.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Korean" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[LocalizationManager sharedInstance] setPreferredLanguage:LocalizationManagerLanguageSettingKorean];
+            [weakSelf.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+
+    }
+}
+
+
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -96,6 +124,7 @@ static NSString * const reuseIdentifier = @"DecisionCell";
     if(indexPath.section == HesitationCollectionViewSectionHeader){
         HesitationCollectionViewHeaderView *reusableView = (id)[collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"NumberOfDecisionsHeader" forIndexPath:indexPath];
         
+        
         [reusableView setFirstLabelTextToString:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideHesitationFirstPromptKey]];
         [reusableView setSecondLabelTextToString:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideHesitationSecondPromptKey]];
     
@@ -104,7 +133,6 @@ static NSString * const reuseIdentifier = @"DecisionCell";
     }
     return emptyView;
 }
-
 
 #pragma mark <UICollectionViewDelegate>
 

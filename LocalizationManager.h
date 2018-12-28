@@ -16,7 +16,7 @@ typedef enum  {
 
 @interface LocalizationManager : NSObject
 
-@property (nonatomic, readonly) LocalizationManagerLanguageSetting *preferredLanguage;
+@property (nonatomic, assign) LocalizationManagerLanguageSetting preferredLanguage;
 
 + (instancetype)sharedInstance;
 - (NSString *)stringForPromptKey:(NSString *)key;

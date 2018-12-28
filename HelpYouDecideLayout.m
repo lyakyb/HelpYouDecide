@@ -54,12 +54,13 @@
     attributes.zIndex = 1024;
     attributes.hidden = NO;
     
-//    CGFloat yCenterOffset = currentBounds.origin.y + currentBounds.size.height - attributes.size.height/2.0f;
+//     CGFloat yCenterOffset = currentBounds.origin.y + currentBounds.size.height - attributes.size.height/2.0f;
     
     attributes.center = CGPointMake(CGRectGetMidX(currentBounds), [[UIScreen mainScreen] bounds].size.height - currentBounds.size.height);
     
 #ifdef DEBUG
     NSLog(@"Updated footer attributes");
+    NSLog(@"currentBounds: %@", currentBounds);
 #endif
 }
 

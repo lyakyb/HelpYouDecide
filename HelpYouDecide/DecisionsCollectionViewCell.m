@@ -19,6 +19,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.textField.delegate = self;
+    
 }
 
 - (void)updatePlaceHolderTextTo:(NSString *)text {
@@ -50,6 +51,11 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     [self.delegate textFieldUpdatedToValue:textField.text];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.textField resignFirstResponder];
+    return YES;
 }
 
 @end

@@ -11,8 +11,6 @@
 
 @interface LocalizationManager ()
 
-@property (nonatomic, readwrite, assign) LocalizationManagerLanguageSetting *preferredLanguage;
-
 @end
 
 @implementation LocalizationManager

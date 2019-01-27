@@ -30,13 +30,13 @@
     
     CABasicAnimation *drawAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     [drawAnimation setFromValue:@(0.0)];
-    [drawAnimation setDuration:5.f];
+    [drawAnimation setDuration:2.f];
     [drawAnimation setToValue:@(1.0)];
     [drawAnimation setFillMode:kCAFillModeForwards];
     
     CABasicAnimation *fillAnimation = [CABasicAnimation animationWithKeyPath:@"fillColor"];
     [fillAnimation setFromValue:(id)[UIColor clearColor].CGColor];
-    [fillAnimation setDuration:5.f];
+    [fillAnimation setDuration:2.f];
     [fillAnimation setToValue:(id)[self fillColor].CGColor];
     [fillAnimation setFillMode:kCAFillModeForwards];
 
@@ -51,7 +51,7 @@
     [CATransaction setCompletionBlock:^{
         NSMutableDictionary *dict = [NSMutableDictionary new];
         [dict setObject:weakSelf forKey:ShowHesiationCollectionVCSegue];
-        [weakSelf performSelector:@selector(performSegueWrapper:) withObject:dict afterDelay:2.0];
+        [weakSelf performSelector:@selector(performSegueWrapper:) withObject:dict afterDelay:1.0];
     }];
     [scaledLayer addAnimation:drawAnimation forKey:@"strokeEnd"];
     [CATransaction commit];

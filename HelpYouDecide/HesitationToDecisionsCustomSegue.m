@@ -29,7 +29,7 @@
         sourceViewControllerView.frame = CGRectOffset(sourceViewControllerView.frame, 0.0, -screenHeight);
         destinationViewControllerView.frame = CGRectOffset(destinationViewControllerView.frame, 0.0, -screenHeight);
     } completion:^(BOOL finished) {
-        [weakSelf.sourceViewController presentViewController:self.destinationViewController animated:NO completion:nil];
+        [weakSelf.sourceViewController presentViewController:weakSelf.destinationViewController animated:NO completion:nil];
     }];
     
 }

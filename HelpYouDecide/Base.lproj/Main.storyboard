@@ -22,7 +22,7 @@
                     </view>
                     <connections>
                         <outlet property="view" destination="ulD-nm-9Hu" id="GIe-eJ-ZXr"/>
-                        <segue destination="U8t-Y6-Vaa" kind="presentation" identifier="ShowHesitationCollectionViewController" id="CiR-Eg-CKR"/>
+                        <segue destination="U8t-Y6-Vaa" kind="custom" identifier="ShowHesitationCollectionViewController" customClass="FadeOutSegue" id="CiR-Eg-CKR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jhw-C3-2pr" userLabel="First Responder" sceneMemberID="firstResponder"/>

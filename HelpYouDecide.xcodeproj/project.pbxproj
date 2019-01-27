@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E720F1121FDFE460068E5AE /* DeviceType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E720F1021FDFE460068E5AE /* DeviceType.m */; };
 		8E7C95D021FD46A200C155DC /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C95CF21FD46A200C155DC /* SplashViewController.m */; };
 		8E7C95D421FD827900C155DC /* FadeOutSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C95D321FD827900C155DC /* FadeOutSegue.m */; };
 		8E9B936C1FE4A6DE00409BBD /* SharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B936B1FE4A6DE00409BBD /* SharedConstants.m */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E720F1021FDFE460068E5AE /* DeviceType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceType.m; sourceTree = "<group>"; };
+		8E720F1221FDFF120068E5AE /* DeviceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceType.h; sourceTree = "<group>"; };
 		8E7C95CE21FD46A200C155DC /* SplashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		8E7C95CF21FD46A200C155DC /* SplashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		8E7C95D221FD827900C155DC /* FadeOutSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FadeOutSegue.h; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 			children = (
 				8E7C95D221FD827900C155DC /* FadeOutSegue.h */,
 				8E7C95D321FD827900C155DC /* FadeOutSegue.m */,
+				8E720F1021FDFE460068E5AE /* DeviceType.m */,
+				8E720F1221FDFF120068E5AE /* DeviceType.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				8EA6D6B51FD7CA1000DF56FA /* DecisionsCollectionViewController.m in Sources */,
 				8E9B93811FE541E000409BBD /* HelpYouDecideLayout.m in Sources */,
 				8E9B93871FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.m in Sources */,
+				8E720F1121FDFE460068E5AE /* DeviceType.m in Sources */,
 				8EA6D6B01FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.m in Sources */,
 				8ED9EAB62000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m in Sources */,
 				8EF4FB181FD8EB3400D39055 /* DecisionsFooterView.m in Sources */,

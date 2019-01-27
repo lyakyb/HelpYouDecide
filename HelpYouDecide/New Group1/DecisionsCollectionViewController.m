@@ -13,6 +13,7 @@
 #import "DecisionsCollectionViewCell.h"
 #import "SharedConstants.h"
 #import "LocalizationManager.h"
+#import "DeviceType.h"
 
 @interface DecisionsCollectionViewController () <UICollectionViewDelegateFlowLayout, DecisionsCollectionViewCellDelegate>
 
@@ -100,9 +101,16 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 #pragma mark <UICollectionViewDelegateFlowLayout>
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
-    
     if (section == DecisionsCollectionViewSectionFooter) {
-        return CGSizeMake(self.collectionView.bounds.size.width, 100.0f);
+        
+        CGFloat footerHeight = ([[UIScreen mainScreen] bounds].size.height * 0.15f);
+        NSString *device = [DeviceType deviceModel];
+        
+        if ([device containsString:@"iPhone X"]) {
+            footerHeight = footerHeight + [[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom;
+        }
+        
+        return CGSizeMake(self.collectionView.bounds.size.width, footerHeight);
     }
     
     return CGSizeZero;

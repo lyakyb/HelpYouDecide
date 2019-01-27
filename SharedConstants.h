@@ -21,6 +21,7 @@ extern NSString * const HelpYouDecideRetryPromptKey;
 extern NSString * const HelpYouDecideInputPromptKey;
 extern NSString * const HelpYouDecideLetsRollPromptKey;
 
+extern NSString * const ShowHesiationCollectionVCSegue;
 
 @interface SharedConstants : NSObject
 

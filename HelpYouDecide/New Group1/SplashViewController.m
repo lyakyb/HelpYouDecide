@@ -7,6 +7,7 @@
 //
 
 #import "SplashViewController.h"
+#import "SharedConstants.h"
 
 @interface SplashViewController ()
 
@@ -24,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //TODO: Should I pull this out and move to view?
     [CATransaction begin];
     
     CABasicAnimation *drawAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
@@ -40,25 +42,23 @@
 
 
     CAShapeLayer *scaledLayer = [self layerWithScaledDownPath:[self ovalPath] forFrame:self.view.frame];
-//    [scaledLayer addAnimation:fillAnimation forKey:@"fillColor"];
     [scaledLayer setStrokeColor:[UIColor colorWithRed:50.f/255.f green:50.f/255.f blue:50.f/255.f alpha:1.f].CGColor];
     [scaledLayer setLineCap:kCALineCapRound];
     [scaledLayer setLineWidth:17.f];
-//    [scaledLayer setFillColor:[self fillColor].CGColor];
     [self.view.layer addSublayer:scaledLayer];
+
     __weak typeof(self) weakSelf = self;
     [CATransaction setCompletionBlock:^{
         NSMutableDictionary *dict = [NSMutableDictionary new];
-        [dict setObject:weakSelf forKey:@"ShowHesitationCollectionViewController"];
+        [dict setObject:weakSelf forKey:ShowHesiationCollectionVCSegue];
         [weakSelf performSelector:@selector(performSegueWrapper:) withObject:dict afterDelay:2.0];
-//        [weakSelf performSegueWithIdentifier:@"ShowHesitationCollectionViewController" sender:weakSelf];
     }];
     [scaledLayer addAnimation:drawAnimation forKey:@"strokeEnd"];
     [CATransaction commit];
 }
 
 - (void)performSegueWrapper:(NSDictionary *)dict {
-    [self performSegueWithIdentifier:dict.allKeys.firstObject sender:dict[@"ShowHesitationCollectionViewController"]];
+    [self performSegueWithIdentifier:dict.allKeys.firstObject sender:dict[ShowHesiationCollectionVCSegue]];
 }
 
 - (CAShapeLayer *)layerWithScaledDownPath:(UIBezierPath*)path forFrame:(CGRect)frame {

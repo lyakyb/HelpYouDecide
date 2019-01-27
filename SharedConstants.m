@@ -20,6 +20,7 @@ NSString * const HelpYouDecideRetryPromptKey = @"HelpYouDecideRetryPromptKey";
 NSString * const HelpYouDecideInputPromptKey = @"HelpYouDecideInputPromptKey";
 NSString * const HelpYouDecideLetsRollPromptKey = @"HelpYouDecideLetsRollPromptKey";
 
+NSString * const ShowHesiationCollectionVCSegue = @"ShowHesitationCollectionViewController";
 
 @implementation SharedConstants
 

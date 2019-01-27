@@ -24,12 +24,11 @@
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
     [keyWindow insertSubview:destinationViewControllerView aboveSubview:sourceViewControllerView];
     
-    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.65f animations:^{
         sourceViewControllerView.frame = CGRectOffset(sourceViewControllerView.frame, 0.0, -screenHeight);
         destinationViewControllerView.frame = CGRectOffset(destinationViewControllerView.frame, 0.0, -screenHeight);
     } completion:^(BOOL finished) {
-        [weakSelf.sourceViewController presentViewController:weakSelf.destinationViewController animated:NO completion:nil];
+        [self.sourceViewController presentViewController:self.destinationViewController animated:NO completion:nil];
     }];
     
 }

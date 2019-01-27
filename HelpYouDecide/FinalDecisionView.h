@@ -28,5 +28,6 @@
 - (void)hideRetrySuggestion;
 - (void)setWinningDecisionTextTo:(NSString *)text;
 - (void)setRetryButtonTextTo:(NSString *)text;
+- (void)setupRetryButton;
 
 @end

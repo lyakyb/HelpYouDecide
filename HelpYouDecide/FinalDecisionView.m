@@ -7,6 +7,7 @@
 //
 
 #import "FinalDecisionView.h"
+#import "DeviceType.h"
 
 @interface FinalDecisionView ()
 
@@ -24,18 +25,27 @@ const CGFloat kRetryButtonHeight = 100.f;
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    CGRect originalBounds = self.retryButton.bounds;
-    originalBounds.size.width = [[UIScreen mainScreen] bounds].size.width;
-    [self.retryButton setBounds:originalBounds];
-
     [self.finalDecisionLabel setFont:[UIFont fontWithName:@"Chalkboard SE" size:40.f]];
     [self.winningDecisionLabel setAlpha:0.f];
     [self.lineView setAlpha:0.f];
     [self.finalDecisionLabel setAlpha:0.f];
     [self resetRetrySuggestion];
-    [self roundAppropriateCorners];
 }
 
+- (void)setupRetryButton {
+    CGRect bounds = self.retryButton.bounds;
+    CGFloat height = [[UIScreen mainScreen] bounds].size.height * 0.15f;
+    if ([[DeviceType deviceModel] containsString:@"X"]) {
+        height = height + [[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom;
+    }
+    bounds.size.width = [[UIScreen mainScreen] bounds].size.width;
+//    bounds.size.height = height;
+
+    [self.retryButton setFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height + self.retryButton.bounds.size.height, bounds.size.width, height)];
+    [self.retryButton setBounds:bounds];
+    [self roundAppropriateCorners];
+    [self.retryButton setBackgroundColor:[UIColor colorWithRed:255.f/255.f green:86.f/255.f blue:95.f/255.f alpha:1.f]];
+}
 
 
 - (void)setRetryAlpha:(CGFloat)alpha {
@@ -45,7 +55,7 @@ const CGFloat kRetryButtonHeight = 100.f;
 
 - (void)roundAppropriateCorners {
     CAShapeLayer *retryMaskLayer = [CAShapeLayer layer];
-    retryMaskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.retryButton.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:(CGSize){10.0, 10.0}].CGPath;
+    retryMaskLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.retryButton.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:(CGSize){15, 15.0}].CGPath;
     self.retryButton.layer.mask = retryMaskLayer;
 }
 
@@ -54,9 +64,12 @@ const CGFloat kRetryButtonHeight = 100.f;
 }
 
 - (void)showRetrySuggestion {
+
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:2.f animations:^{
-        weakSelf.retryButton.frame = CGRectOffset(weakSelf.retryButton.frame, 0.0, -kRetryButtonHeight);
+//        CGRect offsetRect = CGRectOffset(weakSelf.retryButton.frame, 0.0, weakSelf.retryButton.bounds.size.height);
+//        weakSelf.retryButton.frame = CGRectOffset(offsetRect, 0.0, -2*weakSelf.retryButton.bounds.size.height);
+        weakSelf.retryButton.frame = CGRectMake(0.0, [[UIScreen mainScreen] bounds].size.height - 1.5f*weakSelf.retryButton.bounds.size.height, weakSelf.retryButton.bounds.size.width, weakSelf.retryButton.bounds.size.height);
         [weakSelf.retryButton setAlpha:1.f];
     } completion:^(BOOL finished) {
         if (finished) {

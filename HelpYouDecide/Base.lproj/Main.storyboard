@@ -190,7 +190,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D7w-Id-jxV">
-                                    <rect key="frame" x="0.0" y="-30" width="414" height="130"/>
+                                    <rect key="frame" x="0.0" y="-10" width="414" height="110"/>
                                     <state key="normal">
                                         <attributedString key="attributedTitle">
                                             <fragment content="Let's Roll! ">
@@ -208,9 +208,9 @@
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="D7w-Id-jxV" firstAttribute="top" secondItem="gxQ-qU-0Pf" secondAttribute="top" constant="-30" id="1hh-Zc-x2x"/>
                                 <constraint firstItem="D7w-Id-jxV" firstAttribute="leading" secondItem="gxQ-qU-0Pf" secondAttribute="leading" id="8tv-zC-bTf"/>
                                 <constraint firstAttribute="trailing" secondItem="D7w-Id-jxV" secondAttribute="trailing" id="Bdw-er-Tlu"/>
+                                <constraint firstItem="D7w-Id-jxV" firstAttribute="top" secondItem="gxQ-qU-0Pf" secondAttribute="top" constant="-10" id="P5V-Wa-K8H"/>
                                 <constraint firstAttribute="bottom" secondItem="D7w-Id-jxV" secondAttribute="bottom" id="lJs-da-jih"/>
                                 <constraint firstItem="D7w-Id-jxV" firstAttribute="centerX" secondItem="gxQ-qU-0Pf" secondAttribute="centerX" id="odK-T8-3SV"/>
                             </constraints>
@@ -303,11 +303,8 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ua-NW-Iaf">
-                                <rect key="frame" x="0.0" y="862" width="414" height="100"/>
-                                <color key="backgroundColor" red="1" green="0.35677908972170991" blue="0.41473738807816896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Jxr-39-Yv5"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="944" width="414" height="56"/>
+                                <color key="backgroundColor" red="0.99843567609786987" green="0.33815884590148926" blue="0.37425768375396729" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="31"/>
                                 <color key="tintColor" red="0.20784313979999999" green="0.20784313979999999" blue="0.27450981740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="New Decision to Make?"/>
@@ -330,9 +327,9 @@
                             <constraint firstItem="yYW-od-Cp5" firstAttribute="centerX" secondItem="JDf-sv-bDL" secondAttribute="centerX" id="UfM-2i-N2s"/>
                             <constraint firstItem="QWe-fC-CZl" firstAttribute="width" secondItem="lOK-ed-aE5" secondAttribute="width" multiplier="0.7" id="Uki-O3-ivS"/>
                             <constraint firstItem="yYW-od-Cp5" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="bottom" priority="750" constant="100" id="bDL-Hq-94n"/>
+                            <constraint firstItem="6Ua-NW-Iaf" firstAttribute="top" secondItem="lOK-ed-aE5" secondAttribute="topMargin" constant="900" id="d12-zd-nia"/>
                             <constraint firstItem="JDf-sv-bDL" firstAttribute="width" secondItem="lOK-ed-aE5" secondAttribute="width" id="ioA-xg-LPM"/>
                             <constraint firstItem="KJJ-1T-fye" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="top" constant="70" id="l42-84-WnZ"/>
-                            <constraint firstItem="Abi-p6-PoK" firstAttribute="bottom" secondItem="6Ua-NW-Iaf" secondAttribute="bottom" constant="-100" id="nPq-cv-xeg"/>
                             <constraint firstItem="QWe-fC-CZl" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="bottom" constant="1" id="tfk-Dl-sXT"/>
                             <constraint firstItem="6Ua-NW-Iaf" firstAttribute="leading" secondItem="Abi-p6-PoK" secondAttribute="leading" id="wC1-9h-seb"/>
                         </constraints>

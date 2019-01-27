@@ -106,9 +106,9 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
         CGFloat footerHeight = ([[UIScreen mainScreen] bounds].size.height * 0.15f);
         NSString *device = [DeviceType deviceModel];
         
-//        if ([device containsString:@"iPhone X"]) {
-//            footerHeight = footerHeight + [[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom;
-//        }
+        if ([device containsString:@"iPhone X"]) {
+            footerHeight = footerHeight + [[[UIApplication sharedApplication] keyWindow] safeAreaInsets].bottom / 2;
+        }
         
         return CGSizeMake(self.collectionView.bounds.size.width, footerHeight);
     }

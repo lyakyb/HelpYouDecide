@@ -12,6 +12,7 @@
 #import "SharedConstants.h"
 #import "FinalDecisionCollectionView.h"
 #import "FinalDecisionCollectionViewCell.h"
+#import "DeviceType.h"
 
 @interface FinalDecisionViewController () <FinalDecisionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
@@ -34,6 +35,8 @@
     
     [self.view.window makeKeyWindow];
     [self.view.window makeKeyAndVisible];
+    
+    [self.view setupRetryButton];
     
     [self.view setWinningDecisionTextTo:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideWinningPromptKey]];
     [self.view setRetryButtonTextTo:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideRetryPromptKey]];
@@ -149,5 +152,6 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(self.collectionView.frame.size.width, self.collectionView.frame.size.height / [[DefaultManager sharedInstance] numberOfDecisions]);
 }
+
 
 @end

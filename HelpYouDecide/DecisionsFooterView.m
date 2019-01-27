@@ -33,6 +33,7 @@
     CAShapeLayer *rollButtonLayer = [CAShapeLayer layer];
     rollButtonLayer.path = [UIBezierPath bezierPathWithRoundedRect:self.rollButton.bounds byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:(CGSize){10.0, 10.0}].CGPath;
     self.rollButton.layer.mask = rollButtonLayer;
+    self.rollButton.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
 
     [self.rollButton setTitleColor:[self disabledTextColor] forState:UIControlStateNormal];
     self.rollButton.tintColor = [self disabledTextColor];
@@ -41,12 +42,17 @@
     [self disableRollButton];    
 }
 
+- (void)setBounds:(CGRect)bounds {
+    [super setBounds:bounds];
+    [self.rollButton setBounds:bounds];
+}
+
 - (void)disableRollButton {
     if (!self.isEnabled) return;
     
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:1.f animations:^{
+        [UIView animateWithDuration:.5f animations:^{
             weakSelf.backgroundColor = [UIColor colorWithRed:125.f/255.f green:125.f/255.f blue:125.f/255.f alpha:1.f];
             [weakSelf.rollButton setTitleColor:[weakSelf disabledTextColor]
                                       forState:UIControlStateNormal];            
@@ -72,7 +78,7 @@
     
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [UIView animateWithDuration:1.f animations:^{
+        [UIView animateWithDuration:.5f animations:^{
             weakSelf.backgroundColor = [UIColor colorWithRed:90.f/255.f green:149.f/255.f blue:255.f/255.f alpha:1.f];
             [weakSelf.rollButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         } completion:^(BOOL finished) {

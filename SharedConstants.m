@@ -10,8 +10,11 @@
 
 NSString * const HelpYouDecideAllDecisionsTyped = @"HelpYouDecideAllDecisionsTyped";
 NSString * const HelpYouDecideDecisionsNotTyped = @"HelpYouDecideDecisionNotTyped";
+NSString * const HelpYouDecideReadyToRoll = @"HelpYouDecideReadyToRoll";
+NSString * const HelpYouDecideNotReadyToRoll = @"HelpYouDecideNotReadyToRoll";
 NSString * const HelpYouDecideLetsRoll = @"HelpYouDecideLetsRoll";
 NSString * const HelpYouDecideDecisionsPageLoaded = @"HelpYouDecideDecisionsPageLoaded";
+
 
 NSString * const HelpYouDecideWinningPromptKey = @"HelpYouDecideWinningPromptKey";
 NSString * const HelpYouDecideHesitationFirstPromptKey = @"HelpYouDecideHesitationFirstPromptKey";

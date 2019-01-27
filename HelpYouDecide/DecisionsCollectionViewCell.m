@@ -38,6 +38,22 @@
     [self.textField resignFirstResponder];
 }
 
+- (void)enableWarning {
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.textField setTintColor:[UIColor redColor]];
+        [weakSelf.textField setTextColor:[UIColor redColor]];
+    });
+}
+
+- (void)disableWarning {
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.textField setTintColor:[UIColor blackColor]];
+        [weakSelf.textField setTextColor:[UIColor blackColor]];
+    });
+}
+
 - (BOOL)hasInput {
 #ifdef DEBUG
     NSLog(@"text : %@", self.textField.text);
@@ -45,12 +61,12 @@
     return self.textField.text.length > 0;
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [self.delegate textFieldUpdatingFromValue:textField.text];
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [self.delegate textFieldUpdatingFromValue:textField.text sender:self];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    [self.delegate textFieldUpdatedToValue:textField.text];
+    [self.delegate textFieldUpdatedToValue:textField.text sender:self];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

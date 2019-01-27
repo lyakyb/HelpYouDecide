@@ -48,7 +48,7 @@
 }
 
 - (void)disableRollButton {
-    if (!self.isEnabled) return;
+//    if (!self.isEnabled) return;
     
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -74,7 +74,7 @@
 }
 
 - (void)enableRollButton {
-    if (self.isEnabled) return;
+//    if (self.isEnabled) return;
     
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{

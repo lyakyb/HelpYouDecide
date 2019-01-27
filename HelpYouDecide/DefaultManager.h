@@ -11,13 +11,17 @@
 
 @interface DefaultManager : NSObject
 
-@property (nonatomic, assign) NSInteger numberOfDecisions;
 @property (nonatomic, readonly) NSArray *decisions;
 @property (nonatomic, readonly) NSString *finalDecision;
 @property (nonatomic, readonly) NSUInteger finalDecisionIndex;
 
 + (instancetype)sharedInstance;
-- (void)storeDecisionsAndRollFromArray:(NSArray *)decisions;
 - (void)clearDecisions;
+- (void)roll;
+- (BOOL)addDecision:(NSString *)decision;
+- (NSArray *)duplicateValues;
+- (void)setNumberOfDecisions:(NSInteger)numberOfDecisions;
+- (NSInteger)numberOfDecisions;
+- (void)updateWithArray:(NSArray *)array;
 
 @end

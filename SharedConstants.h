@@ -10,8 +10,10 @@
 
 extern NSString * const HelpYouDecideAllDecisionsTyped;
 extern NSString * const HelpYouDecideDecisionsNotTyped;
+extern NSString * const HelpYouDecideReadyToRoll;
 extern NSString * const HelpYouDecideLetsRoll;
 extern NSString * const HelpYouDecideDecisionsPageLoaded;
+extern NSString * const HelpYouDecideNotReadyToRoll;
 
 //Dictionary Keys
 extern NSString * const HelpYouDecideWinningPromptKey;

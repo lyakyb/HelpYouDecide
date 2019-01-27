@@ -17,8 +17,7 @@
 
 @interface DecisionsCollectionViewController () <UICollectionViewDelegateFlowLayout, DecisionsCollectionViewCellDelegate>
 
-@property (nonatomic, strong) NSMutableDictionary *decisions;
-@property (nonatomic, strong) NSMutableArray *decisionArray;
+@property (nonatomic, strong) NSMutableArray *decisionCells;
 @property (nonatomic, strong) DecisionsFooterView *footerView;
 @property (nonatomic, assign) BOOL footerNeedsUpdate;
 @property (nonatomic, assign) NSInteger decisionCounter;
@@ -35,10 +34,12 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 
     self.decisionCounter = 0;
     
-    self.decisionArray = [NSMutableArray arrayWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
+    self.decisionCells = [NSMutableArray arrayWithCapacity:[[DefaultManager sharedInstance] numberOfDecisions]];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:HelpYouDecideDecisionsPageLoaded object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managerReadyToRoll) name:HelpYouDecideReadyToRoll object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managerNotReadyToRoll) name:HelpYouDecideNotReadyToRoll object:nil];
+
 //    [(UICollectionViewFlowLayout*)self.collectionViewLayout setSectionFootersPinToVisibleBounds:YES];
 }
 
@@ -48,22 +49,29 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
     
     cell.delegate = self;
     [cell updatePlaceHolderTextTo:[[LocalizationManager sharedInstance] stringForPromptKey:HelpYouDecideInputPromptKey]];
-    
+    [self.decisionCells addObject:cell];
     return cell;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    self.decisions = nil;
+    self.decisionCells = nil;
+}
+
+- (void)managerReadyToRoll {
+    [self.footerView enableRollButton];
+}
+
+- (void)managerNotReadyToRoll {
+    [self.footerView disableRollButton];
 }
 
 - (IBAction)saveAllDecisionsAndRoll:(id)sender {
     if (self.editingDecision != nil) {
-        [self.decisionArray addObject:self.editingDecision];
     }
     
-    [[DefaultManager sharedInstance] storeDecisionsAndRollFromArray:[self.decisionArray copy]];
+    [[DefaultManager sharedInstance] roll];
     
     [self performSegueWithIdentifier:@"LetsRollSegue" sender:nil];
 #ifdef DEBUG
@@ -128,28 +136,68 @@ static NSString * const reuseIdentifier = @"DecisionsCell";
 //}
 
 #pragma mark <DecisionsCollectionViewCellDelegate>
-- (void)textFieldUpdatingFromValue:(NSString *)text {
-    if ([self.decisionArray containsObject:text]) {
-        self.editingDecision = text;
-        [self.decisionArray removeObject:text];
-    }
+- (void)textFieldUpdatingFromValue:(NSString *)text sender:(DecisionsCollectionViewCell *)sender{
+    self.editingDecision = text;
+    [sender disableWarning];
 }
 
-- (void)textFieldUpdatedToValue:(NSString *)text {
-    if (text == nil || text.length == 0) {
-        self.decisionCounter--;
-        [self.footerView disableRollButton];
-        return;
+- (void)textFieldUpdatedToValue:(NSString *)text sender:(DecisionsCollectionViewCell *)sender{
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
+    
+    [self.decisionCells enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        __block NSString *decision = [((DecisionsCollectionViewCell *)obj) decision];
+        
+        if (dict[decision] == nil && [decision length] != 0) {
+            [dict setObject:[NSMutableArray arrayWithObject:[NSNumber numberWithUnsignedInteger:idx]] forKey:decision];
+            [arr addObject:decision];
+        } else {
+            [((NSMutableArray*)[dict objectForKey:decision]) addObject:[NSNumber numberWithUnsignedInteger:idx]];
+        }
+    }];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    for (int i=0; i<dict.allKeys.count; i++) {
+        NSArray *cells = [dict objectForKey:arr[i]];
+        if (cells.count > 1) {
+            [cells enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                [((DecisionsCollectionViewCell *)weakSelf.decisionCells[[obj integerValue]]) enableWarning];
+            }];
+        } else {
+            [((DecisionsCollectionViewCell *)[weakSelf.decisionCells objectAtIndex:[cells[0] integerValue]]) disableWarning];
+        }
     }
     
-    [self.decisionArray addObject:text];
-    self.editingDecision = nil;
+    [[DefaultManager sharedInstance] updateWithArray:arr];
     
-    if (self.decisionCounter == [[DefaultManager sharedInstance] numberOfDecisions] - 1) {
-        [self.footerView enableRollButton];
-    } else {
-        self.decisionCounter++;
-    }
+//    NSMutableDictionary *currVals = [NSMutableDictionary new];
+//    NSMutableArray *dupArr = [[NSMutableArray alloc] initWithCapacity:[DefaultManager sharedInstance].numberOfDecisions];
+//    __weak typeof(self) weakSelf = self;
+//    [self.decisionCells enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        DecisionsCollectionViewCell *cell = (DecisionsCollectionViewCell *)obj;
+//        if (currVals[text] == nil) {
+//            [currVals setObject:[NSMutableArray arrayWithObject:[NSNumber numberWithUnsignedInteger:idx]] forKey:cell.decision];
+//        } else {
+//            [((NSMutableArray*)[currVals objectForKey:cell.decision]) addObject:[NSNumber numberWithUnsignedInteger:idx]];
+//        }
+//        if (![dupArr containsObject:cell.decision] && [cell.decision isEqualToString:@""]) {
+//            [dupArr addObject:cell.decision];
+//        }
+//    }];
+//
+//    for (int i=0; i<currVals.allKeys.count; i++) {
+//        NSArray *cells = [currVals objectForKey:dupArr[i]];
+//        if (cells.count > 1) {
+//            [cells enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                [((DecisionsCollectionViewCell *)weakSelf.decisionCells[[obj integerValue]]) enableWarning];
+//            }];
+//        } else {
+//            [((DecisionsCollectionViewCell *)[weakSelf.decisionCells objectAtIndex:[cells[0] integerValue]]) disableWarning];
+//        }
+//    }
+//
+//    [[DefaultManager sharedInstance] updateFromArray:dupArr];
 }
 
 @end

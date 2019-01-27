@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class DecisionsCollectionViewCell;
 @protocol DecisionsCollectionViewCellDelegate
 
-- (void)textFieldUpdatedToValue:(NSString*)text;
-- (void)textFieldUpdatingFromValue:(NSString*)text;
+- (void)textFieldUpdatedToValue:(NSString*)text sender:(DecisionsCollectionViewCell *)sender;
+- (void)textFieldUpdatingFromValue:(NSString*)text sender:(DecisionsCollectionViewCell *)sender;
 
 @end
 
@@ -24,6 +24,8 @@
 - (BOOL)hasInput;
 - (void)displayKeyboard;
 - (void)hideKeyboard;
+- (void)enableWarning;
+- (void)disableWarning;
 
 @end
 

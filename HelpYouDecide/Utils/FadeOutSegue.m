@@ -19,11 +19,14 @@
     UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
     [keyWindow insertSubview:destinationViewControllerView aboveSubview:sourceViewControllerView];
     
-    [UIView animateWithDuration:1.0f animations:^{
+    [UIView animateWithDuration:.5f animations:^{
         sourceViewControllerView.alpha = 0.f;
-        destinationViewControllerView.alpha = 1.f;
     } completion:^(BOOL finished) {
-        [self.sourceViewController presentViewController:self.destinationViewController animated:NO completion:nil];
+        [UIView animateWithDuration:.5f animations:^{
+            destinationViewControllerView.alpha = 1.f;
+        } completion:^(BOOL finished) {
+            [self.sourceViewController presentViewController:self.destinationViewController animated:NO completion:nil];
+        }];
     }];
 
 }

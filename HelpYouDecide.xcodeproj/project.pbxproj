@@ -28,6 +28,7 @@
 		8EA6D6C11FD7DE2600DF56FA /* HesitationCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6D6C01FD7DE2600DF56FA /* HesitationCollectionViewCell.m */; };
 		8ED9EAB02000D51100B3E759 /* FinalDecisionCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9EAAF2000D51100B3E759 /* FinalDecisionCollectionView.m */; };
 		8ED9EAB62000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9EAB52000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m */; };
+		8EE3D17821FE5E45004E9513 /* FinalSingleDecisionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE3D17721FE5E45004E9513 /* FinalSingleDecisionView.m */; };
 		8EF4FB181FD8EB3400D39055 /* DecisionsFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB171FD8EB3400D39055 /* DecisionsFooterView.m */; };
 		8EF4FB1B1FD9133800D39055 /* DecisionsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB1A1FD9133800D39055 /* DecisionsCollectionView.m */; };
 		8EF4FB1E1FD9137D00D39055 /* DecisionsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4FB1D1FD9137D00D39055 /* DecisionsCollectionViewCell.m */; };
@@ -87,6 +88,8 @@
 		8ED9EAAF2000D51100B3E759 /* FinalDecisionCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalDecisionCollectionView.m; sourceTree = "<group>"; };
 		8ED9EAB42000DCCB00B3E759 /* FinalDecisionCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinalDecisionCollectionViewCell.h; sourceTree = "<group>"; };
 		8ED9EAB52000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalDecisionCollectionViewCell.m; sourceTree = "<group>"; };
+		8EE3D17621FE5E45004E9513 /* FinalSingleDecisionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinalSingleDecisionView.h; sourceTree = "<group>"; };
+		8EE3D17721FE5E45004E9513 /* FinalSingleDecisionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinalSingleDecisionView.m; sourceTree = "<group>"; };
 		8EF4FB161FD8EB3400D39055 /* DecisionsFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecisionsFooterView.h; sourceTree = "<group>"; };
 		8EF4FB171FD8EB3400D39055 /* DecisionsFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DecisionsFooterView.m; sourceTree = "<group>"; };
 		8EF4FB191FD9133800D39055 /* DecisionsCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DecisionsCollectionView.h; sourceTree = "<group>"; };
@@ -205,6 +208,8 @@
 			children = (
 				8EA6D6AE1FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.h */,
 				8EA6D6AF1FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.m */,
+				8EE3D17621FE5E45004E9513 /* FinalSingleDecisionView.h */,
+				8EE3D17721FE5E45004E9513 /* FinalSingleDecisionView.m */,
 			);
 			name = Views;
 			path = "New Group";
@@ -333,6 +338,7 @@
 				8E9B93871FE601AC00409BBD /* FinalDecisionToHesitationCustomUnwindSegue.m in Sources */,
 				8E720F1121FDFE460068E5AE /* DeviceType.m in Sources */,
 				8EA6D6B01FD6EE1800DF56FA /* HesitationCollectionViewHeaderView.m in Sources */,
+				8EE3D17821FE5E45004E9513 /* FinalSingleDecisionView.m in Sources */,
 				8ED9EAB62000DCCB00B3E759 /* FinalDecisionCollectionViewCell.m in Sources */,
 				8EF4FB181FD8EB3400D39055 /* DecisionsFooterView.m in Sources */,
 				8E9B93841FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m in Sources */,

@@ -29,5 +29,7 @@
 - (void)setWinningDecisionTextTo:(NSString *)text;
 - (void)setRetryButtonTextTo:(NSString *)text;
 - (void)setupRetryButton;
+- (void)showTexts:(NSArray *)texts;
+- (void)showFinalText;
 
 @end

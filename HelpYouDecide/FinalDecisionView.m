@@ -8,6 +8,7 @@
 
 #import "FinalDecisionView.h"
 #import "DeviceType.h"
+#import "FinalSingleDecisionView.h"
 
 @interface FinalDecisionView ()
 
@@ -15,16 +16,16 @@
 @property (nonatomic, weak) IBOutlet UILabel *finalDecisionLabel;
 @property (nonatomic, weak) IBOutlet UIButton *retryButton;
 @property (nonatomic, weak) IBOutlet UIView *lineView;
+@property (nonatomic, weak) IBOutlet FinalSingleDecisionView *singleView;
+@property (nonatomic, strong) NSTimer *textTimer;
 
 @end
 
 const CGFloat kRetryButtonHeight = 100.f;
 
 @implementation FinalDecisionView
-
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
     [self.finalDecisionLabel setFont:[UIFont fontWithName:@"Chalkboard SE" size:40.f]];
     [self.winningDecisionLabel setAlpha:0.f];
     [self.lineView setAlpha:0.f];
@@ -47,7 +48,18 @@ const CGFloat kRetryButtonHeight = 100.f;
     [self.retryButton setBackgroundColor:[UIColor colorWithRed:255.f/255.f green:86.f/255.f blue:95.f/255.f alpha:1.f]];
 }
 
-
+- (void)showTexts:(NSArray *)texts {
+    self.textTimer = [NSTimer timerWithTimeInterval:1.f repeats:YES block:^(NSTimer * _Nonnull timer) {
+        NSInteger range = (texts.count);
+        int number = arc4random_uniform(range);
+        [self.singleView setDecisionText:texts[number]];
+    }];
+    [[NSRunLoop mainRunLoop] addTimer:self.textTimer forMode:NSRunLoopCommonModes];
+}
+- (void)showFinalText {
+    [self.textTimer invalidate];
+    [self.singleView showFinalDecision];
+}
 - (void)setRetryAlpha:(CGFloat)alpha {
     [self.retryButton setAlpha:alpha];
 //    [self.transparentView setAlpha:alpha * 0.9];
@@ -64,7 +76,6 @@ const CGFloat kRetryButtonHeight = 100.f;
 }
 
 - (void)showRetrySuggestion {
-
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:2.f animations:^{
 //        CGRect offsetRect = CGRectOffset(weakSelf.retryButton.frame, 0.0, weakSelf.retryButton.bounds.size.height);

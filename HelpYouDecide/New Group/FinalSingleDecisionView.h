@@ -10,7 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol FinalSingleDecisionViewDelegate
+
+- (void)didFinishSettingText;
+
+@end
+
 @interface FinalSingleDecisionView : UIView
+
+@property (nonatomic, weak) id<FinalSingleDecisionViewDelegate> delegate;
+
+- (void)setDecisionText:(NSString *)text;
+- (void)showFinalDecision;
 
 @end
 

@@ -54,6 +54,7 @@
     self.timer = [NSTimer timerWithTimeInterval:4.f repeats:NO block:^(NSTimer * _Nonnull timer) {
         [weakSelf highlightFinalDecision];
         [[weakSelf highlightTimer] invalidate];
+        [weakSelf.view showFinalText];
 #ifdef DEBUG
         NSLog(@"show final decision");
 #endif
@@ -63,6 +64,7 @@
     self.highlightTimer = [NSTimer timerWithTimeInterval:0.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
         [weakSelf highlightCells];
     }];
+    [self.view showTexts:[[DefaultManager sharedInstance] decisions]];
     [[NSRunLoop mainRunLoop] addTimer:self.highlightTimer forMode:NSRunLoopCommonModes];
     
     [self.collectionView reloadData];

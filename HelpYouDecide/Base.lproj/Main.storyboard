@@ -313,11 +313,34 @@
                                     <action selector="yesButtonPressed:" destination="lOK-ed-aE5" eventType="touchDown" id="oEi-s3-72l"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWx-Sg-nVI" customClass="FinalSingleDecisionView">
+                                <rect key="frame" x="0.0" y="124" width="414" height="638"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Decision" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLm-6y-jW5">
+                                        <rect key="frame" x="41.5" y="223.5" width="331" height="191"/>
+                                        <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="cLm-6y-jW5" firstAttribute="height" secondItem="PWx-Sg-nVI" secondAttribute="height" multiplier="0.3" id="Ih8-Vd-mka"/>
+                                    <constraint firstItem="cLm-6y-jW5" firstAttribute="centerY" secondItem="PWx-Sg-nVI" secondAttribute="centerY" id="MLB-4F-efC"/>
+                                    <constraint firstItem="cLm-6y-jW5" firstAttribute="centerX" secondItem="PWx-Sg-nVI" secondAttribute="centerX" id="OM8-pR-aDl"/>
+                                    <constraint firstItem="cLm-6y-jW5" firstAttribute="width" secondItem="PWx-Sg-nVI" secondAttribute="width" multiplier="0.8" id="ZbM-iR-Qc1"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="finalDecisionLabel" destination="cLm-6y-jW5" id="JEW-v1-xra"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QWe-fC-CZl" firstAttribute="centerX" secondItem="JDf-sv-bDL" secondAttribute="centerX" id="2QV-gc-ZBt"/>
+                            <constraint firstItem="PWx-Sg-nVI" firstAttribute="centerX" secondItem="KJJ-1T-fye" secondAttribute="centerX" id="8ra-Ji-vHS"/>
                             <constraint firstItem="KJJ-1T-fye" firstAttribute="centerX" secondItem="JDf-sv-bDL" secondAttribute="centerX" id="BcR-N6-uZ5"/>
+                            <constraint firstItem="PWx-Sg-nVI" firstAttribute="height" secondItem="KJJ-1T-fye" secondAttribute="height" id="E5h-VK-Mgu"/>
                             <constraint firstItem="JDf-sv-bDL" firstAttribute="top" secondItem="Abi-p6-PoK" secondAttribute="top" constant="10" id="GSw-Li-9Sg"/>
                             <constraint firstItem="Abi-p6-PoK" firstAttribute="bottom" secondItem="KJJ-1T-fye" secondAttribute="bottom" constant="100" id="LJx-iO-nAO"/>
                             <constraint firstItem="Abi-p6-PoK" firstAttribute="trailing" secondItem="6Ua-NW-Iaf" secondAttribute="trailing" id="Nvo-i7-0zP"/>
@@ -328,8 +351,10 @@
                             <constraint firstItem="QWe-fC-CZl" firstAttribute="width" secondItem="lOK-ed-aE5" secondAttribute="width" multiplier="0.7" id="Uki-O3-ivS"/>
                             <constraint firstItem="yYW-od-Cp5" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="bottom" priority="750" constant="100" id="bDL-Hq-94n"/>
                             <constraint firstItem="6Ua-NW-Iaf" firstAttribute="top" secondItem="lOK-ed-aE5" secondAttribute="topMargin" constant="900" id="d12-zd-nia"/>
+                            <constraint firstItem="PWx-Sg-nVI" firstAttribute="centerY" secondItem="KJJ-1T-fye" secondAttribute="centerY" id="hv1-70-7Pu"/>
                             <constraint firstItem="JDf-sv-bDL" firstAttribute="width" secondItem="lOK-ed-aE5" secondAttribute="width" id="ioA-xg-LPM"/>
                             <constraint firstItem="KJJ-1T-fye" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="top" constant="70" id="l42-84-WnZ"/>
+                            <constraint firstItem="PWx-Sg-nVI" firstAttribute="width" secondItem="KJJ-1T-fye" secondAttribute="width" id="scH-pd-Fah"/>
                             <constraint firstItem="QWe-fC-CZl" firstAttribute="top" secondItem="JDf-sv-bDL" secondAttribute="bottom" constant="1" id="tfk-Dl-sXT"/>
                             <constraint firstItem="6Ua-NW-Iaf" firstAttribute="leading" secondItem="Abi-p6-PoK" secondAttribute="leading" id="wC1-9h-seb"/>
                         </constraints>
@@ -338,6 +363,7 @@
                             <outlet property="finalDecisionLabel" destination="yYW-od-Cp5" id="xLJ-T5-y6g"/>
                             <outlet property="lineView" destination="QWe-fC-CZl" id="uw5-8q-nWE"/>
                             <outlet property="retryButton" destination="6Ua-NW-Iaf" id="b5j-Cz-Sta"/>
+                            <outlet property="singleView" destination="PWx-Sg-nVI" id="Zt8-1g-7fy"/>
                             <outlet property="winningDecisionLabel" destination="JDf-sv-bDL" id="ATj-UY-qOe"/>
                         </connections>
                     </view>

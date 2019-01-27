@@ -30,7 +30,6 @@ static NSString * const reuseIdentifier = @"DecisionCell";
 
 @implementation HesitationCollectionViewController
 
-
 - (void)awakeFromNib {
     [super awakeFromNib];
 //    [self.collectionView registerNib:[UINib nibWithNibName:@"NumberOfDecisionsHeader" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"NumberOfDecisionsHeader"];
@@ -66,6 +65,7 @@ static NSString * const reuseIdentifier = @"DecisionCell";
 #ifdef DEBUG
         NSLog(@"shake detected");
 #endif
+                
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"HelpYouDecide" message:@"Which language do you prefer?" preferredStyle:UIAlertControllerStyleAlert];
         
         __weak typeof(self) weakSelf = self;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E7C95D021FD46A200C155DC /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C95CF21FD46A200C155DC /* SplashViewController.m */; };
 		8E9B936C1FE4A6DE00409BBD /* SharedConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B936B1FE4A6DE00409BBD /* SharedConstants.m */; };
 		8E9B93811FE541E000409BBD /* HelpYouDecideLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B93801FE541E000409BBD /* HelpYouDecideLayout.m */; };
 		8E9B93841FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B93831FE5BC5A00409BBD /* HesitationToDecisionsCustomSegue.m */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E7C95CE21FD46A200C155DC /* SplashViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
+		8E7C95CF21FD46A200C155DC /* SplashViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
 		8E9B936A1FE4A6DE00409BBD /* SharedConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedConstants.h; sourceTree = "<group>"; };
 		8E9B936B1FE4A6DE00409BBD /* SharedConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SharedConstants.m; sourceTree = "<group>"; };
 		8E9B937F1FE541E000409BBD /* HelpYouDecideLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpYouDecideLayout.h; sourceTree = "<group>"; };
@@ -108,6 +111,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E7C95D121FD4E1D00C155DC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		8EA6D6791FD6E55D00DF56FA = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		8EA6D6841FD6E55D00DF56FA /* HelpYouDecide */ = {
 			isa = PBXGroup;
 			children = (
+				8E7C95D121FD4E1D00C155DC /* Utils */,
 				8EA6D6BC1FD7D1DA00DF56FA /* HesitationCollectionViewController.h */,
 				8EA6D6BD1FD7D1DA00DF56FA /* HesitationCollectionViewController.m */,
 				8EF4FB161FD8EB3400D39055 /* DecisionsFooterView.h */,
@@ -196,6 +207,8 @@
 				8EA6D6B41FD7CA1000DF56FA /* DecisionsCollectionViewController.m */,
 				8EA6D6B61FD7CA4300DF56FA /* FinalDecisionViewController.h */,
 				8EA6D6B71FD7CA4300DF56FA /* FinalDecisionViewController.m */,
+				8E7C95CE21FD46A200C155DC /* SplashViewController.h */,
+				8E7C95CF21FD46A200C155DC /* SplashViewController.m */,
 			);
 			name = ViewControllers;
 			path = "New Group1";
@@ -318,6 +331,7 @@
 				8E9B936C1FE4A6DE00409BBD /* SharedConstants.m in Sources */,
 				8EA6D6951FD6E55D00DF56FA /* main.m in Sources */,
 				8EA6D6B81FD7CA4300DF56FA /* FinalDecisionViewController.m in Sources */,
+				8E7C95D021FD46A200C155DC /* SplashViewController.m in Sources */,
 				8EF4FB1E1FD9137D00D39055 /* DecisionsCollectionViewCell.m in Sources */,
 				8EA6D6871FD6E55D00DF56FA /* AppDelegate.m in Sources */,
 				8EF4FB211FD937FE00D39055 /* DefaultManager.m in Sources */,

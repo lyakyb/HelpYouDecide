@@ -16,6 +16,11 @@
 
 @implementation FinalSingleDecisionView
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self.finalDecisionLabel setText:@""];
+}
+
 
 - (void)setDecisionText:(NSString *)text {
     __weak typeof(self) weakSelf = self;

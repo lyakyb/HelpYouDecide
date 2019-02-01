@@ -49,7 +49,7 @@ const CGFloat kRetryButtonHeight = 100.f;
 }
 
 - (void)showTexts:(NSArray *)texts {
-    self.textTimer = [NSTimer timerWithTimeInterval:1.f repeats:YES block:^(NSTimer * _Nonnull timer) {
+    self.textTimer = [NSTimer timerWithTimeInterval:.5f repeats:YES block:^(NSTimer * _Nonnull timer) {
         NSInteger range = (texts.count);
         int number = arc4random_uniform(range);
         [self.singleView setDecisionText:texts[number]];

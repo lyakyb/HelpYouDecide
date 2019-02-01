@@ -51,7 +51,7 @@
     [super viewDidAppear:animated];
     [self.view showWinningDecisionLabel];
     __weak typeof(self) weakSelf = self;
-    self.timer = [NSTimer timerWithTimeInterval:4.f repeats:NO block:^(NSTimer * _Nonnull timer) {
+    self.timer = [NSTimer timerWithTimeInterval:5.f repeats:NO block:^(NSTimer * _Nonnull timer) {
         [weakSelf highlightFinalDecision];
         [[weakSelf highlightTimer] invalidate];
         [weakSelf.view showFinalText];

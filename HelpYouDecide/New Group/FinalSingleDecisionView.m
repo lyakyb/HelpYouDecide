@@ -24,11 +24,11 @@
 
 - (void)setDecisionText:(NSString *)text {
     __weak typeof(self) weakSelf = self;
-    [UIView animateWithDuration:0.4f animations:^{
+    [UIView animateWithDuration:0.2f animations:^{
         [weakSelf.finalDecisionLabel setAlpha:0.1f];
     } completion:^(BOOL finished) {
         [weakSelf.finalDecisionLabel setText:text];
-        [UIView animateWithDuration:0.4f animations:^{
+        [UIView animateWithDuration:0.2f animations:^{
             [weakSelf.finalDecisionLabel setAlpha:1.f];
         }];
     }];
